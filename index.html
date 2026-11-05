@@ -42,6 +42,9 @@ button{cursor:pointer}
 svg.i{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 [hidden]{display:none!important}
 #termSheet{z-index:80}
+.sauce-steps{margin:12px 0 0;padding-left:20px}
+.sauce-steps li{font-size:15px;line-height:1.5;margin-bottom:8px;color:var(--ink-2)}
+.sauce-steps li::marker{font-weight:700;color:var(--accent)}
 body:not(.pro) .pro-only{display:none!important}
 body.pro .simple-only{display:none!important}
 body:not(.pro) .ing li{grid-template-columns:26px 1fr auto}
@@ -343,6 +346,7 @@ nav.tabs button[aria-selected="true"]{color:var(--accent)}
         <div class="hydhint" id="hydHint"></div>
       </div>
       <ul class="ing" id="ingTable"></ul>
+      <button type="button" class="btn" id="sauceBtn" style="width:100%;margin-top:10px" hidden><svg class="i" viewBox="0 0 24 24"><path d="M4 11h16a8 8 0 0 1-16 0z"/><path d="M8 7c0-2 2-2 2-4M13 7c0-2 2-2 2-4"/></svg><span id="sauceBtnTxt">Sauce recipe</span></button>
       <p class="note" id="ingNote"></p>
     </div>
     <p class="src pro-only" id="src"></p>
@@ -467,6 +471,9 @@ nav.tabs button[aria-selected="true"]{color:var(--accent)}
 
 <div class="sheet" id="termSheet" role="dialog" aria-modal="true" aria-labelledby="termTitle">
   <div class="in"><div class="grab"></div><h3 id="termTitle"><span id="termName"></span><button type="button" id="termClose">Got it</button></h3><p class="sub" id="termText" style="font-size:16px"></p><div id="termMore"></div></div>
+</div>
+<div class="sheet" id="sauceSheet" role="dialog" aria-modal="true" aria-labelledby="sauceTitle">
+  <div class="in"><div class="grab"></div><h3><span id="sauceTitle"></span><button type="button" id="sauceClose">Done</button></h3><div id="sauceBody"></div></div>
 </div>
 <div class="toast" id="toast" role="status"></div>
 <div class="km" id="km" role="dialog" aria-modal="true" aria-label="Kitchen mode">
@@ -673,13 +680,13 @@ const HR = 3600e3;
 
 /* ---------- Recipe bases (baker's % of total flour) ---------- */
 const STYLES = {
-  neapolitan:{flourName:'00 pizza flour (bread flour works too)',bakeH:0.25,name:'Neapolitan',group:'Pizza',kind:'pizza',hyd:62,salt:2.5,oil:0,sugar:0,
+  neapolitan:{sauce:'raw',flourName:'00 pizza flour (bread flour works too)',bakeH:0.25,name:'Neapolitan',group:'Pizza',kind:'pizza',hyd:62,salt:2.5,oil:0,sugar:0,
     density:2.21,sizes:[10,12,14],defSize:1,defHours:34,bakeLead:0.25,goodFor:3,
     ball:'radial-gradient(circle at 35% 35%,#F6E7C8 0 18%,transparent 19%),radial-gradient(circle at 62% 58%,#F8F0DE 0 14%,transparent 15%),radial-gradient(circle,#C8432B 0 62%,#E8C38E 63% 100%)',
     blurb:'Soft, puffy rim. Flour, water, salt, yeast.',
     src:'Classic Neapolitan formula: hydration in the traditional 55–62% band and 2–3% salt, no oil or sugar.',
     links:[['Neapolitan spec','https://goop.com/recipes/neapolitanish-pizza-dough/'],['Dough ratios','https://production.matthewmarks.com/?p=15052']]},
-  ny:{recipeLeaven:'10 g instant yeast (1.6%)',flourName:'Bread flour',bakeH:0.25,name:'New York',group:'Pizza',kind:'pizza',hyd:66.5,salt:1.6,oil:5,sugar:2.4,
+  ny:{sauce:'ny',recipeLeaven:'10 g instant yeast (1.6%)',flourName:'Bread flour',bakeH:0.25,name:'New York',group:'Pizza',kind:'pizza',hyd:66.5,salt:1.6,oil:5,sugar:2.4,
     density:3.3,sizes:[12,14,16],defSize:0,defHours:26,bakeLead:0.25,goodFor:3,
     ball:'radial-gradient(circle at 40% 40%,#F2D27A 0 20%,transparent 21%),radial-gradient(circle,#E0A33A 0 64%,#D9A86A 65% 100%)',
     blurb:'Thin, foldable, crisp. A little oil and sugar.',
@@ -721,14 +728,14 @@ const STYLES = {
     blurb:'Soft inside, golden crust. Same-day, four ingredients.',
     src:'Bites with Bri\'s Homemade French Bread: 480 g bread flour, 7 g yeast, 10 g kosher salt, 340 g water for 2 large loaves, baked at 425°F with a pan of water for steam.',
     links:[['Bites with Bri','https://biteswithbri.com/homemade-french-bread-recipe/']]},
-  pan:{defCount:2,minW:10,recipeLeaven:'4 g instant yeast (1%)',flourName:'Bread flour',bakeH:0.3,name:'Pan pizza',short:'Pan pizza',group:'Pizza',kind:'tray',hyd:68.75,salt:2.5,oil:2,sugar:0,units:['pizza','pizzas'],perUnit:2,roomOnly:true,roomRange:[8,24],
+  pan:{sauce:'ny',defCount:2,minW:10,recipeLeaven:'4 g instant yeast (1%)',flourName:'Bread flour',bakeH:0.3,name:'Pan pizza',short:'Pan pizza',group:'Pizza',kind:'tray',hyd:68.75,salt:2.5,oil:2,sugar:0,units:['pizza','pizzas'],perUnit:2,roomOnly:true,roomRange:[8,24],
     y0:1.0,PR:2,defHours:15,bakeLead:0.4,goodFor:4,recipeFlour:400,
     sizes:['10 in skillet'],flourPer:[200],defSize:0,extras:[],
     tops:sc=>[['Pizza sauce',`${(1.5*sc).toFixed(2).replace(/\.?0+$/,'')} cups`],['Low-moisture mozzarella, grated',g(340*sc)],['Parmesan or pecorino, grated',g(57*sc)],['Olive oil, for the pans',`${Math.round(4*sc)} tbsp`]],
     blurb:'Thick, crispy, fried-bottom pizza from a cast-iron skillet.',
     src:'J. Kenji López-Alt\'s Foolproof Pan Pizza (Serious Eats): 400 g bread flour, 10 g kosher salt, 4 g instant yeast, 275 g water and 8 g olive oil, mixed without kneading, left 8–24 h at cool room temperature, then pressed into two oiled 10 in cast-iron skillets and baked at 550°F for 12–15 min.',
     links:[['Serious Eats (via Cooklang)','https://recipes.cooklang.org/recipes/1158']]},
-  detroit:{minW:3,recipeLeaven:'5 g instant yeast (1.7%)',flourName:'Bread flour',bakeH:0.25,name:'Detroit',short:'Detroit',group:'Pizza',kind:'tray',hyd:73,salt:3,oil:0,sugar:0,units:['pan','pans'],perUnit:3,
+  detroit:{sauce:'detroit',minW:3,recipeLeaven:'5 g instant yeast (1.7%)',flourName:'Bread flour',bakeH:0.25,name:'Detroit',short:'Detroit',group:'Pizza',kind:'tray',hyd:73,salt:3,oil:0,sugar:0,units:['pan','pans'],perUnit:3,
     y0:1.67,bulkY:2,PC:1.5,PR:1.25,defHours:4.5,bakeLead:0.4,goodFor:4,recipeFlour:300,
     sizes:['10×14 in pan'],flourPer:[300],defSize:0,extras:[],
     tops:sc=>[['Brick cheese, in ½ in cubes<span class="spoon">or half low-moisture mozzarella, half mild cheddar</span>',g(340*sc)],['Crushed tomatoes, for the sauce',`${(sc).toFixed(sc%1?1:0)} × 28 oz can`],['Olive oil, for the pan',g(55*sc)]],
@@ -789,6 +796,23 @@ const STYLES = {
     blurb:'Puffs into a pocket in a very hot oven.',
     src:'King Arthur\'s Golden Pita Bread: 360 g all-purpose flour, 227 g water, 25 g oil, 2 tsp sugar, 9 g salt and 2 tsp instant yeast for 8 pitas, baked on a sheet on the lowest rack of a 500°F oven.',
     links:[['King Arthur','https://www.kingarthurbaking.com/recipes/golden-pita-bread-recipe']]}
+};
+const SAUCES={
+  raw:{title:'Neapolitan tomato sauce',sub:'No-cook · 5 minutes',
+    ing:[['Whole peeled San Marzano tomatoes','1 can (28 oz / 796 ml)'],['Fine sea salt','½ tsp']],
+    steps:['Tip the tomatoes and their juice into a bowl and crush them by hand until chunky-smooth.','Stir in the salt.','Don\'t cook it. It cooks on the pizza in the oven.'],
+    note:'Traditional Neapolitan sauce is just tomatoes and salt. Some people add a little olive oil or a basil leaf; purists don\'t.',
+    src:[['Coley Cooks','https://coleycooks.com/pizza-sauce-recipe/'],['Little Spoon Farm','https://littlespoonfarm.com/neapolitan-style-pizza-sauce-recipe']]},
+  ny:{title:'New York-style pizza sauce',sub:'Kenji López-Alt (Serious Eats) · about 1 hour',
+    ing:[['Whole tomatoes, with juice','1 can (28 oz / 796 ml)'],['Olive oil','1 tbsp'],['Butter','1 tbsp'],['Garlic','2 cloves'],['Dried oregano','1 tsp'],['Red pepper flakes','1 pinch'],['Salt','1 large pinch'],['Yellow onion, halved','1 medium'],['Basil','2 sprigs'],['Sugar','1 tsp']],
+    steps:['Blend the tomatoes and juice until slightly chunky (food mill, food processor or stick blender).','Melt the oil and butter in a saucepan over medium-low. Add the garlic, oregano, pepper flakes and salt and cook about 3 minutes, until fragrant but not browned.','Add the tomatoes, onion halves, basil and sugar.','Bring to a simmer, then turn to the lowest heat so bubbles barely break. Cook about 1 hour, stirring now and then, until reduced by half.','Take out the onion and basil, season with salt to taste, and let it cool.'],
+    note:'Keeps up to 2 weeks in the fridge, so it\'s easy to make a day or two ahead.',
+    src:[['Serious Eats recipe (Cooklang copy)','https://recipes.cooklang.org/recipes/781']]},
+  detroit:{title:'Detroit-style sauce',sub:'From Food52\'s version of Kenji\'s Detroit pizza',
+    ing:[['Crushed tomatoes','1 can (28 oz / 796 ml)'],['Olive oil','to taste'],['Garlic','to taste'],['Red pepper flakes','to taste'],['Dried oregano','to taste'],['Onion powder','to taste'],['Sugar','to taste'],['Salt','to taste']],
+    steps:['Warm the olive oil in a saucepan and add the garlic, pepper flakes and oregano.','Add the tomatoes, onion powder, sugar and salt.','Simmer until thick and reduced to about 3 cups.','Spoon it over the pizza in stripes.'],
+    note:'The source lists these ingredients but not the exact amounts of the seasonings, so season to your taste. Start small with the sugar and pepper flakes.',
+    src:[['Food52','https://food52.com/recipes/73884-detroit-style-pizza']]}
 };
 const GROUPS=[['Pizza','Pizza'],['Crusty','Crusty'],['Soft','Soft & sweet'],['Flat','Flat & bagels']];
 ['focaccia','sourdough','ciabatta','overnight','baguette','french'].forEach(k=>STYLES[k].group='Crusty');
@@ -1260,6 +1284,7 @@ function render(){
   $('#equip').innerHTML = equipFor().map(([n,t])=>`<li><span>${gloss(n)}</span><small>${t}</small></li>`).join('');
   document.body.classList.toggle('pro', !!settings.pro);
   $('#proSw').checked = $('#proSw2').checked = !!settings.pro;
+  $('#sauceBtn').hidden=!st.sauce; if(st.sauce) $('#sauceBtnTxt').textContent='Sauce recipe: '+SAUCES[st.sauce].title;
   // steps view
   $('#stepsHead').textContent = `${st.name}, ready ${fmtWhen(P.eat)}`;
   $('#stepsSub').textContent = `${STEPS.length-1} steps. Tick them off as you go.`;
@@ -1497,6 +1522,16 @@ $('#kmPrev').onclick=()=>{kmStop();km.i=Math.max(0,km.i-1);kmRender()};
 $('#kmNext').onclick=()=>{const a=kmSteps(),st=a[km.i];S.done[st.title+'|'+(+st.at)]=true;kmStop();if(km.i<a.length-1){km.i++;kmRender()}else{$('#kmClose').click();toast('All done. Enjoy!')}};
 
 /* ---------- New UI wiring ---------- */
+$('#sauceBtn').onclick=()=>{ const r=SAUCES[STYLES[S.style].sauce]; if(!r) return;
+  $('#sauceTitle').textContent=r.title;
+  $('#sauceBody').innerHTML=`<p class="sub" style="margin-top:-4px">${r.sub} · makes one batch</p>
+  <ul class="equip">${r.ing.map(([n,a])=>`<li><span>${n}</span><b style="white-space:nowrap">${a}</b></li>`).join('')}</ul>
+  <ol class="sauce-steps">${r.steps.map(x=>`<li>${x}</li>`).join('')}</ol>
+  <p class="note">${r.note}</p>
+  <p class="src" style="margin:8px 0 0">Source: ${r.src.map(l=>`<a href="${l[1]}" target="_blank" rel="noopener">${l[0]}</a>`).join(' · ')}</p>`;
+  $('#sauceSheet').classList.add('open'); };
+$('#sauceClose').onclick=()=>$('#sauceSheet').classList.remove('open');
+$('#sauceSheet').addEventListener('click',e=>{if(e.target.id==='sauceSheet')$('#sauceSheet').classList.remove('open')});
 $$('[data-q]').forEach(b=>b.onclick=()=>{
   if(b.dataset.q==='now'){ if(S.mode!=='hours'){ const st=STYLES[S.style]; S.hours=Math.round(clamp(st.defHours, S.leaven==='starter'?(needFeed()?14:8):Math.max((st.minW||2.5)+1,3), Math.max(10,(st.minW||0)+2, S.leaven==='starter'?14:0))); } S.mode='hours'; }
   else { S.mode='readyBy'; S.start=recommendedStart(); }
@@ -1532,7 +1567,7 @@ $('#adjust').addEventListener('click',e=>{if(e.target.id==='adjust')$('#adjust')
 $('#nowSw').onchange=e=>{S.mode=e.target.checked?'hours':'readyBy'; if(S.mode==='readyBy') S.start=recommendedStart(); render()};
 $('#ingTable').onclick=e=>{const li=e.target.closest('li'); if(!li)return; const k=li.dataset.k; S.ing[k]=!S.ing[k]; render()};
 $('#ingTable').onkeydown=e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault(); e.target.click()}};
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#adjust').classList.remove('open');$('#termSheet').classList.remove('open')}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#adjust').classList.remove('open');$('#sauceSheet').classList.remove('open');$('#termSheet').classList.remove('open')}});
 // onboarding
 const stepT=(k,d)=>{settings[k]=clamp(settings[k]+d*(settings.unit==='F'?5/9:0.5), k==='roomC'?16:1, k==='roomC'?30:8); store.set('rise.settings',settings); render()};
 $('#onbRm').onclick=()=>stepT('roomC',-1); $('#onbRp').onclick=()=>stepT('roomC',1);
