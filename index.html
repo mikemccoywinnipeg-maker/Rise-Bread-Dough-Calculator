@@ -276,7 +276,7 @@ nav.tabs button[aria-selected="true"]{color:var(--accent)}
 .onb .in{max-width:480px;margin:0 auto;width:100%;padding:16px 18px calc(20px + env(safe-area-inset-bottom))}
 .onb .q{margin:12px 0 6px;font-weight:700;font-size:15.5px}
 .onb .q small{display:block;font-weight:400;color:var(--muted);font-size:13px;margin-top:2px}
-.yt{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.yt{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .yt button{border:1.5px solid var(--line);background:var(--card);border-radius:var(--r-md);padding:10px 6px;font-size:13.5px;font-weight:600}
 .yt button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
 
@@ -382,6 +382,7 @@ nav.tabs button[aria-selected="true"]{color:var(--accent)}
       <div class="slider"><div class="r"><span>Fridge temperature</span><b id="fridgeVal"></b></div><input type="range" id="fridgeIn" min="1" max="8" step="0.5"></div>
       <div class="slider"><div class="r"><span>Extra for dough loss</span><b id="lossVal"></b></div><input type="range" id="lossIn" min="0" max="5" step="0.5"></div>
       <p class="note" style="margin:-6px 0 12px">A little dough always stays on the bowl and bench. This adds it back so your balls and loaves come out at full weight.</p>
+      <label class="field sel" style="margin-bottom:8px"><small>Usually bake with</small><select id="defLeaven"><option value="yeast">Yeast</option><option value="starter">Sourdough starter</option></select></label>
       <label class="field sel"><small>Yeast in your cupboard</small>
         <select id="yeastType"><option value="IDY">Instant dry yeast</option><option value="ADY">Active dry yeast</option><option value="fresh">Fresh yeast</option></select></label>
       <p class="note">Starter amounts assume a ripe 100% hydration starter (equal flour and water by weight).</p>
@@ -458,8 +459,8 @@ nav.tabs button[aria-selected="true"]{color:var(--accent)}
     <div class="krow"><div><b id="onbRoom"></b></div><div class="bt"><button type="button" class="rb" id="onbRm">−</button><button type="button" class="rb" id="onbRp">+</button></div></div>
     <div class="q">How cold is your fridge?<small>If you don't know, leave it at 39°F (4°C).</small></div>
     <div class="krow"><div><b id="onbFr"></b></div><div class="bt"><button type="button" class="rb" id="onbFm">−</button><button type="button" class="rb" id="onbFp">+</button></div></div>
-    <div class="q">Which yeast do you have?</div>
-    <div class="yt"><button type="button" data-yt="IDY">Instant</button><button type="button" data-yt="ADY">Active dry</button><button type="button" data-yt="fresh">Fresh</button></div>
+    <div class="q">What do you usually bake with?<small>You can still switch any bake between yeast and starter.</small></div>
+    <div class="yt"><button type="button" data-yt="IDY">Instant yeast</button><button type="button" data-yt="ADY">Active dry yeast</button><button type="button" data-yt="fresh">Fresh yeast</button><button type="button" data-yt="starter">Sourdough starter</button></div>
     <button type="button" class="btn primary" id="onbDone" style="width:100%;margin-top:20px">Start planning</button>
   </div>
 </div>
@@ -799,7 +800,7 @@ const store = {
 };
 const settings = Object.assign({unit:'F',roomC:21,yeastType:'IDY',fridgeC:4,loss:2}, store.get('rise.settings',{}));
 function nextSat19(){const d=new Date();d.setHours(19,0,0,0);let add=(6-d.getDay()+7)%7;if(add===0&&d<new Date())add=7;d.setDate(d.getDate()+add);return d}
-const S = {ing:{},ripe:false,style:'neapolitan',count:4,sizeIdx:1,leaven:'yeast',mode:'readyBy',eat:nextSat19(),start:null,hours:24,oven:'home',mix:'hand',hyd:null,salt:null,done:{}};
+const S = {ing:{},ripe:false,style:'neapolitan',count:4,sizeIdx:1,leaven:(settings.defLeaven==='starter'?'starter':'yeast'),mode:'readyBy',eat:nextSat19(),start:null,hours:24,oven:'home',mix:'hand',hyd:null,salt:null,done:{}};
 S.start = recommendedStart();
 
 /* ---------- Helpers ---------- */
@@ -1275,7 +1276,8 @@ function render(){
   $('#fridgeIn').value=settings.fridgeC; $('#fridgeVal').textContent=fmtT2(settings.fridgeC);
   $('#lossIn').value=settings.loss; $('#lossVal').textContent=settings.loss+'%';
   $('#onbRoom').textContent=fmtT2(settings.roomC); $('#onbFr').textContent=fmtT2(settings.fridgeC);
-  $$('[data-yt]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.yt===settings.yeastType));
+  $$('[data-yt]').forEach(b=>b.setAttribute('aria-pressed', settings.defLeaven==='starter' ? b.dataset.yt==='starter' : b.dataset.yt===settings.yeastType));
+  $('#defLeaven').value=settings.defLeaven||'yeast';
   renderSaved();
 }
 
@@ -1373,7 +1375,7 @@ function applyParse(o){
   if(o.style && o.style!==S.style){ S.ing={}; S.style=o.style; S.sizeIdx=STYLES[o.style].defSize; S.hyd=S.salt=null; if(!o.count) S.count = STYLES[o.style].defCount ?? (STYLES[o.style].kind==='pizza'?4:1); }
   const st=STYLES[S.style];
   if(o.style){ S.oven=o.oven||'home'; S.mix=o.mix||'hand'; }
-  if(o.leaven) S.leaven=o.leaven; else if(o.style) S.leaven = S.style==='sourdough'?'starter':'yeast';
+  if(o.leaven) S.leaven=o.leaven; else if(o.style) S.leaven = (S.style==='sourdough'||settings.defLeaven==='starter')?'starter':'yeast';
   if(o.count) S.count=clamp(o.count,1,24);
   if(o.people && !o.count){ const st2=STYLES[S.style], kind=st2.kind; S.count=clamp(st2.perUnit?Math.ceil(o.people/st2.perUnit):(kind==='pizza'?o.people:Math.ceil(o.people/(kind==='tray'?8:6))),1,24); }
   if(o.size && st.kind==='pizza'){ let best=0; st.sizes.forEach((z,i)=>{if(Math.abs(z-o.size)<Math.abs(st.sizes[best]-o.size))best=i}); S.sizeIdx=best; }
@@ -1535,7 +1537,8 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#adjust').classL
 const stepT=(k,d)=>{settings[k]=clamp(settings[k]+d*(settings.unit==='F'?5/9:0.5), k==='roomC'?16:1, k==='roomC'?30:8); store.set('rise.settings',settings); render()};
 $('#onbRm').onclick=()=>stepT('roomC',-1); $('#onbRp').onclick=()=>stepT('roomC',1);
 $('#onbFm').onclick=()=>stepT('fridgeC',-1); $('#onbFp').onclick=()=>stepT('fridgeC',1);
-$$('[data-yt]').forEach(b=>b.onclick=()=>{settings.yeastType=b.dataset.yt; store.set('rise.settings',settings); render()});
+$$('[data-yt]').forEach(b=>b.onclick=()=>{ if(b.dataset.yt==='starter'){ settings.defLeaven='starter'; } else { settings.yeastType=b.dataset.yt; settings.defLeaven='yeast'; } S.leaven = (S.style==='sourdough'||settings.defLeaven==='starter')?'starter':'yeast'; if(S.mode==='readyBy') S.start=recommendedStart(); store.set('rise.settings',settings); render()});
+$('#defLeaven').onchange=e=>{settings.defLeaven=e.target.value; store.set('rise.settings',settings); S.leaven=(S.style==='sourdough'||settings.defLeaven==='starter')?'starter':'yeast'; if(S.mode==='readyBy') S.start=recommendedStart(); render()};
 function openOnb(){ $('#onbArt').innerHTML=ART.strip(); $('#onb').classList.add('open'); }
 $('#onbDone').onclick=()=>{ store.set('rise.settings',settings); store.set('rise.onb',1); $('#onb').classList.remove('open'); toast('Kitchen saved'); };
 $('#rerunOnb').onclick=openOnb;
