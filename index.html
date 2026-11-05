@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#EFEBE4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14110E" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Rise">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20100%20100%22%3E%20%20%3Cdefs%3E%20%20%20%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%233B2416%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23170E09%22/%3E%3C/linearGradient%3E%20%20%20%20%3CradialGradient%20id%3D%22glow%22%20cx%3D%2250%25%22%20cy%3D%2278%25%22%20r%3D%2260%25%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23F2A653%22%20stop-opacity%3D%22.55%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23F2A653%22%20stop-opacity%3D%220%22/%3E%3C/radialGradient%3E%20%20%20%20%3ClinearGradient%20id%3D%22crust%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23F3C47E%22/%3E%3Cstop%20offset%3D%22.55%22%20stop-color%3D%22%23D88E45%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%239C5420%22/%3E%3C/linearGradient%3E%20%20%20%20%3ClinearGradient%20id%3D%22ear%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%220%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23FFF1D6%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23F6D6A0%22/%3E%3C/linearGradient%3E%20%20%3C/defs%3E%20%20%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2224%22%20fill%3D%22url%28%23bg%29%22/%3E%20%20%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2224%22%20fill%3D%22url%28%23glow%29%22/%3E%20%20%20%20%3Cg%20fill%3D%22none%22%20stroke%3D%22%23F6D6A0%22%20stroke-width%3D%223.6%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.9%22%3E%20%20%20%20%3Cpath%20d%3D%22M38%2033c-4-5%204-8%200-14%22/%3E%3Cpath%20d%3D%22M50%2030c-4-5%204-8%200-15%22/%3E%3Cpath%20d%3D%22M62%2033c-4-5%204-8%200-14%22/%3E%20%20%3C/g%3E%20%20%20%20%3Cpath%20d%3D%22M17%2072c0-17%2015-29%2033-29s33%2012%2033%2029c0%204-3%206-7%206H24c-4%200-7-2-7-6z%22%20fill%3D%22url%28%23crust%29%22/%3E%20%20%20%20%3Cpath%20d%3D%22M30%2060c8-9%2025-12%2041-5%22%20fill%3D%22none%22%20stroke%3D%22%236B3514%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22/%3E%20%20%3Cpath%20d%3D%22M30%2057.5c8-9%2025-12%2041-5%22%20fill%3D%22none%22%20stroke%3D%22url%28%23ear%29%22%20stroke-width%3D%224.4%22%20stroke-linecap%3D%22round%22/%3E%20%20%3Cpath%20d%3D%22M24%2074h52%22%20stroke%3D%22%237A3F18%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.5%22/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<title>Rise — dough planner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EFEBE4; --card:#FBF9F5; --sunk:#E8E1D6; --line:#DDD3C4;
+  --ink:#1E1915; --ink-2:#4E443B; --muted:#6A5E52;
+  --accent:#3E6B3A; --accent-ink:#FFFFFF; --accent-soft:#DDE7D6;
+  --gold:#D9A55B; --fridge:#7F9BB3; --oven:#B4532A; --coolc:#B3A899; --starterc:#9BAE6E;
+  --warn-bg:#F6E3D6; --warn-ink:#7A3215;
+  --r-lg:22px; --r-md:14px; --r-sm:10px;
+  --display:"Bricolage Grotesque", "Figtree", system-ui, sans-serif; --sans:"Figtree", system-ui, sans-serif;
+  --shadow:0 1px 0 rgba(255,255,255,.6) inset, 0 8px 24px rgba(40,28,16,.07);
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#14110E;--card:#1F1A16;--sunk:#2A241E;--line:#3A3129;--ink:#F2ECE4;--ink-2:#D3C8BB;--muted:#AA9D8F;
+    --accent:#8DBB7E;--accent-ink:#11160F;--accent-soft:#2A3826;--warn-bg:#3A2418;--warn-ink:#F3C3A6;--shadow:0 8px 24px rgba(0,0,0,.35)}
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+body{padding:env(safe-area-inset-top) env(safe-area-inset-right) calc(env(safe-area-inset-bottom) + 88px) env(safe-area-inset-left)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:10px}
+.app{max-width:480px;margin:0 auto;padding:12px 14px 24px}
+svg.i{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+[hidden]{display:none!important}
+#termSheet{z-index:80}
+body:not(.pro) .pro-only{display:none!important}
+body.pro .simple-only{display:none!important}
+body:not(.pro) .ing li{grid-template-columns:26px 1fr auto}
+.term{border:0;background:none;padding:0;font:inherit;color:inherit;text-decoration:underline dotted 1.5px;text-decoration-color:var(--accent);text-underline-offset:3px;cursor:help}
+.hero .term{color:inherit}
+.heard{background:var(--accent-soft);color:var(--ink);border-radius:var(--r-md);padding:10px 12px;font-size:13.5px;line-height:1.5;margin:10px 0 0}
+.heard .unk{color:var(--warn-ink)}
+.h2row{display:flex;justify-content:space-between;align-items:center}
+.mini{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--muted)}
+.mini input{appearance:none;-webkit-appearance:none;width:34px;height:20px;border-radius:999px;background:var(--line);position:relative;margin:0}
+.mini input::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .15s}
+.mini input:checked{background:var(--accent)} .mini input:checked::after{transform:translateX(14px)}
+.equip{list-style:none;margin:6px 0 0;padding:0}
+.equip li{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.equip li:last-child{border-bottom:0}
+.equip small{color:var(--muted);font-size:12px;white-space:nowrap;align-self:center}
+.photo{position:absolute;inset:0;background-size:cover;background-repeat:no-repeat}
+.scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,9,6,.86) 0,rgba(14,9,6,.6) 42%,rgba(14,9,6,.08) 78%),linear-gradient(0deg,rgba(14,9,6,.55) 0,rgba(14,9,6,0) 45%)}
+.scrim.b{background:linear-gradient(0deg,rgba(14,9,6,.85) 0,rgba(14,9,6,.15) 60%)}
+.strip{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.strip div{background-size:cover}
+.ph{object-fit:cover;flex:none;display:block}
+svg.ph.art{background:radial-gradient(circle at 50% 60%,#4A2E1C,#1E140E)}
+.chip .ph{width:100%;aspect-ratio:1;height:auto;border-radius:16px;transition:transform .12s}
+.chip:active img.ph{transform:scale(.96)}
+.opt .ph{width:46px;height:46px;border-radius:12px}
+.saved li .ph{width:46px;height:46px;border-radius:12px}
+.empty .ph{width:88px;height:88px;border-radius:50%;margin:0 auto 10px}
+
+/* top */
+.top{display:flex;align-items:center;gap:10px;margin:4px 2px 12px}
+.top .logo{width:36px;height:36px;filter:drop-shadow(0 3px 6px rgba(40,20,8,.25))}
+.top h1{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.02em;margin:0}
+.ask{display:flex;gap:8px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 5px 5px 16px;box-shadow:var(--shadow)}
+.ask input{flex:1;border:0;background:none;outline:none;font-size:16px;min-width:0;padding:8px 0}
+.ask input::placeholder{color:var(--muted)}
+.ask .go{border:0;background:var(--accent);color:var(--accent-ink);border-radius:999px;height:40px;padding:0 16px;font-weight:700;display:flex;align-items:center;gap:6px}
+.gtabs{display:grid;grid-template-columns:auto auto 1fr 1fr;gap:6px;padding:12px 0 0}
+.gtabs::-webkit-scrollbar{display:none}
+.gtabs button{white-space:nowrap;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:7px 10px;font-size:12.5px;font-weight:700;color:var(--ink-2)}
+.gtabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chips{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:10px 0 2px}
+.chips::-webkit-scrollbar{display:none}
+.chip{min-width:0;border:0;background:none;padding:0;font-size:12px;font-weight:600;line-height:1.2;color:var(--ink-2);display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center}
+.chip svg{width:20px;height:20px}
+.chip[aria-pressed="true"]{color:var(--ink);font-weight:800}
+.chip[aria-pressed="true"] img.ph{outline:3px solid var(--accent);outline-offset:2px}
+
+/* hero */
+.hero{position:relative;border-radius:var(--r-lg);overflow:hidden;min-height:224px;margin-top:10px;color:#FFF7EC;background:#1A120D}
+.hero .art{position:absolute;inset:0}
+.hero .art svg{width:100%;height:100%;display:block}
+.hero .n,.hero .m,.hero .when{text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.hero .txt{position:relative;padding:16px 16px 14px;max-width:66%;display:flex;flex-direction:column;min-height:200px}
+.hero .change{border:0;background:rgba(255,247,236,.14);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#FFF7EC;border-radius:999px;padding:5px 11px 5px 12px;font-size:12.5px;font-weight:600;align-self:flex-start;display:flex;gap:4px;align-items:center}
+.hero .n{font-family:var(--display);font-weight:800;font-size:30px;line-height:1.02;letter-spacing:-.02em;margin:10px 0 4px}
+.hero .m{font-size:13.5px;color:#EAD9C2}
+.hero .when{margin-top:auto;padding-top:12px}
+.hero .when b{display:block;font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.01em}
+.hero .when span{font-size:13.5px;color:#EAD9C2}
+.actrow{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;margin:10px 0}
+.btn{border:0;border-radius:999px;padding:13px 14px;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--sunk);color:var(--ink)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.dark{background:var(--ink);color:var(--bg)}
+.btn.icon{width:48px;padding:0}
+.lvquick{margin:0 0 8px}
+.qhours{margin:-2px 0 10px}
+.warn{background:var(--warn-bg);color:var(--warn-ink);border-radius:var(--r-md);padding:10px 12px;font-size:13.5px;margin:0 0 8px;line-height:1.45}
+
+/* cards */
+.card{background:var(--card);border-radius:var(--r-lg);padding:16px;box-shadow:var(--shadow);margin-bottom:10px}
+.card h2{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.01em;margin:0 0 4px}
+.sub{font-size:14px;color:var(--ink-2);line-height:1.45;margin:0 0 10px}
+.note{font-size:13px;color:var(--muted);line-height:1.5;margin:10px 0 0}
+.src{font-size:12.5px;color:var(--muted);line-height:1.5;margin:10px 4px 0}
+.src a{color:var(--ink-2)}
+
+/* timeline bar */
+.tb{position:relative;height:44px;margin:6px 0 2px}
+.tb .night{position:absolute;top:0;bottom:16px;background:repeating-linear-gradient(135deg,var(--line) 0 3px,transparent 3px 7px);border-radius:6px;opacity:.8}
+.tb .seg{position:absolute;top:8px;height:14px;border-radius:4px;min-width:3px}
+.tb .day{position:absolute;top:0;bottom:12px;border-left:1px dashed var(--line)}
+.tb .day span{position:absolute;bottom:-14px;left:3px;font-size:11px;color:var(--muted);white-space:nowrap}
+.tb .end{position:absolute;bottom:0;font-size:11.5px;font-weight:600;color:var(--ink-2);white-space:nowrap}
+.legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:12px;color:var(--muted);margin-top:6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.stat{background:var(--sunk);border-radius:var(--r-md);padding:10px 8px;display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.stat svg{width:16px;height:16px;color:var(--muted)}
+.stat b{font-family:var(--display);font-size:22px;font-weight:700;letter-spacing:-.01em}
+.stat small{font-size:12px;color:var(--muted)}
+
+/* ingredients */
+.flourtip{font-size:13.5px;color:var(--ink-2);margin:0 0 10px}
+.hydbox{background:var(--sunk);border-radius:var(--r-md);padding:10px 12px;margin-bottom:6px}
+.hydbox .top2{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;font-weight:600}
+.hydbox .top2 small{font-weight:400;color:var(--muted);font-size:12px}
+.hydbox .top2 b{font-family:var(--display);font-size:22px}
+.hydctl{display:flex;align-items:center;gap:8px;margin-top:4px}
+.hydctl input{flex:1;accent-color:var(--accent)}
+.rb{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--card);font-size:18px;flex:none;display:grid;place-items:center}
+.hydhint{font-size:12.5px;color:var(--ink-2);margin-top:4px;line-height:1.4}
+.ing{list-style:none;margin:0;padding:0}
+.ing li{display:grid;grid-template-columns:26px 1fr auto 46px;gap:8px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.ing li:last-child{border-bottom:0}
+.ing .cb{width:22px;height:22px;border-radius:7px;border:1.8px solid var(--muted);display:grid;place-items:center}
+.ing li.done .cb{background:var(--accent);border-color:var(--accent)}
+.ing li.done .cb::after{content:"";width:6px;height:11px;border:solid var(--accent-ink);border-width:0 2.4px 2.4px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.ing li.done .nm,.ing li.done .g{opacity:.45;text-decoration:line-through}
+.ing .nm{font-size:15px;line-height:1.3}
+.ing .g{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;font-size:15.5px}
+.ing .p{text-align:right;color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+.spoon{display:block;font-weight:400;font-size:12px;color:var(--muted);line-height:1.35;margin-top:1px}
+.linkbtn{border:0;background:none;color:var(--accent);font-weight:600;font-size:13px;padding:4px 0;text-align:left}
+
+/* steps */
+.tl{list-style:none;margin:6px 0 0;padding:0}
+.tl li{display:grid;grid-template-columns:30px 1fr;gap:10px;padding:13px 0;border-bottom:1px solid var(--line);position:relative}
+.tl li:last-child{border-bottom:0}
+.tl input{width:22px;height:22px;accent-color:var(--accent);margin-top:2px}
+.tl .when{font-size:13px;font-weight:700;color:var(--accent)}
+.tl li.cold .when{color:var(--fridge)}
+.tl .t{font-family:var(--display);font-weight:700;font-size:17px;margin:2px 0}
+.tl .d{font-size:14px;color:var(--ink-2);line-height:1.5}
+.tl li.done .t,.tl li.done .d{text-decoration:line-through;opacity:.5}
+.cal{font-size:13.5px;font-weight:600;color:var(--accent);text-decoration:none}
+
+/* fields (adjust + settings) */
+.grp2{font-family:var(--display);font-weight:700;font-size:15px;margin:16px 0 8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.grid2>*{min-width:0}
+.stepper{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);border-radius:999px;padding:4px;background:var(--card)}
+.stepper .v{text-align:center;line-height:1.1;min-width:0}
+.stepper .v b{font-size:18px;font-weight:700;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stepper .v small{font-size:12px;color:var(--muted)}
+.field{display:block;background:var(--sunk);border-radius:var(--r-md);padding:8px 12px;position:relative}
+.field small{display:block;font-size:12px;color:var(--muted)}
+.field select{border:0;background:none;width:100%;font-weight:600;font-size:15px;padding:2px 0;outline:none;appearance:none;-webkit-appearance:none}
+.field.sel::after{content:"";position:absolute;right:14px;top:50%;width:7px;height:7px;border:solid var(--muted);border-width:0 2px 2px 0;transform:translateY(-70%) rotate(45deg)}
+.tfield{cursor:pointer}
+.tfield b{display:block;font-weight:700;font-size:15px;padding:2px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tfield input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+.lv{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.lv button{border:1.5px solid var(--line);background:var(--card);border-radius:var(--r-md);padding:12px 10px;display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:left}
+.lv button svg{width:30px;height:30px}
+.lv button b{font-size:14.5px}
+.lv button span{font-size:12px;color:var(--muted);line-height:1.3}
+.lv button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.check{display:flex;align-items:center;gap:10px;font-size:14px;margin:10px 0 0 2px;color:var(--ink-2)}
+.check input{width:20px;height:20px;accent-color:var(--accent)}
+.switch{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--sunk);border-radius:var(--r-md);padding:10px 12px;margin-top:8px}
+.switch span{font-size:14.5px;font-weight:600}
+.switch small{display:block;font-weight:400;font-size:12px;color:var(--muted)}
+.switch input{appearance:none;-webkit-appearance:none;width:46px;height:28px;border-radius:999px;background:var(--line);position:relative;flex:none;transition:background .15s;margin:0}
+.switch input::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .15s}
+.switch input:checked{background:var(--accent)}
+.switch input:checked::after{transform:translateX(18px)}
+.hours{background:var(--sunk);border-radius:var(--r-md);padding:10px 12px;margin-top:8px}
+.hours .r{display:flex;justify-content:space-between;align-items:baseline;font-size:14px}
+.hours b{font-family:var(--display);font-size:20px}
+.hours input,.slider input{width:100%;accent-color:var(--accent)}
+.slider{margin:8px 0 12px}
+.slider .r{display:flex;justify-content:space-between;font-size:14.5px}
+.krow{display:flex;align-items:center;justify-content:space-between;background:var(--sunk);border-radius:var(--r-md);padding:6px 6px 6px 12px}
+.krow small{display:block;font-size:12px;color:var(--muted)} .krow b{font-size:15px}
+.krow .bt{display:flex;gap:6px}
+.seg{display:flex;background:var(--sunk);border-radius:999px;padding:4px;margin-bottom:10px}
+.seg button{flex:1;border:0;background:none;border-radius:999px;padding:9px 6px;font-size:14px;font-weight:700;color:var(--ink-2)}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+
+/* sheets */
+.sheet{position:fixed;inset:0;background:rgba(20,14,10,.28);display:none;align-items:flex-end;justify-content:center;z-index:40}
+.sheet.open{display:flex}
+.sheet .in{background:var(--card);width:100%;max-width:480px;border-radius:24px 24px 0 0;padding:8px 16px calc(20px + env(safe-area-inset-bottom));max-height:88vh;overflow:auto;box-shadow:0 -10px 30px rgba(0,0,0,.18)}
+.sheet .grab{width:40px;height:5px;border-radius:9px;background:var(--line);margin:4px auto 10px}
+.sheet h3{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.01em;margin:0 0 10px;display:flex;justify-content:space-between;align-items:center}
+.sheet h3 button{border:0;background:var(--sunk);border-radius:999px;padding:7px 14px;font-weight:700;font-size:14px}
+#adjust .in{max-height:66vh}
+.adjsum{position:sticky;top:-8px;background:var(--card);padding:6px 0 8px;margin:-4px 0 2px;font-size:13px;color:var(--ink-2);border-bottom:1px solid var(--line);z-index:1}
+.adjsum b{color:var(--ink)}
+.grp{font-size:12.5px;color:var(--muted);font-weight:700;margin:12px 0 6px;letter-spacing:.02em}
+.optgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opt{display:flex;align-items:center;gap:10px;width:100%;border:1.5px solid var(--line);background:var(--card);border-radius:var(--r-md);padding:8px;text-align:left}
+.opt svg{width:44px;height:44px;flex:none}
+.opt b{display:block;font-family:var(--display);font-weight:700;font-size:15.5px;line-height:1.15}
+.opt span{display:block;font-size:12px;color:var(--muted);line-height:1.3;margin-top:2px}
+.opt[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+
+/* tabs */
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;background:color-mix(in srgb,var(--card) 92%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom));display:flex;justify-content:center}
+nav.tabs .w{display:grid;grid-template-columns:repeat(4,1fr);width:100%;max-width:480px}
+nav.tabs button{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;font-size:11.5px;font-weight:600;color:var(--muted)}
+nav.tabs button svg{width:24px;height:24px}
+nav.tabs button[aria-selected="true"]{color:var(--accent)}
+
+/* saved */
+.saved{list-style:none;padding:0;margin:0}
+.saved li{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}
+.saved li svg.b{width:42px;height:42px}
+.saved li .x{margin-left:auto;border:0;background:none;color:var(--muted);font-size:22px}
+.saved li button.open{border:0;background:none;text-align:left;flex:1;padding:0}
+.saved li button.open b{font-size:15px}
+.notes{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--bg);padding:8px 10px;font-size:14px;resize:vertical;min-height:40px}
+.empty{color:var(--ink-2);font-size:15px;line-height:1.5;text-align:center;padding:16px 8px}
+.empty svg{width:120px;height:72px;display:block;margin:0 auto 8px}
+
+/* kitchen mode */
+.km{position:fixed;inset:0;background:var(--bg);z-index:50;display:none;flex-direction:column}
+.km.open{display:flex}
+.km .band{position:relative;height:118px;flex:none;color:#FFF7EC;overflow:hidden;background:#1A120D}
+.km .band .art{position:absolute;inset:0} .km .band .art svg{width:100%;height:100%}
+.km .bar{position:relative;display:flex;justify-content:space-between;align-items:center;padding:calc(12px + env(safe-area-inset-top)) 16px 0;font-size:14px;font-weight:600}
+.km .bar span{text-shadow:0 1px 6px rgba(0,0,0,.7)}
+.km .bar button{border:0;background:#FFF7EC;color:#1E1915;box-shadow:0 2px 8px rgba(0,0,0,.3);border-radius:999px;padding:8px 16px;font-weight:700}
+.km .body{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:flex-start;padding-top:22px!important;max-width:540px;margin:0 auto;width:100%;padding:16px 20px;overflow:auto}
+.km .when{color:var(--accent);font-weight:700;font-size:16px}
+.km h3{font-family:var(--display);font-weight:800;font-size:32px;line-height:1.05;letter-spacing:-.02em;margin:8px 0 14px}
+.km p{font-size:18px;line-height:1.45;margin:0;color:var(--ink-2)}
+.km .timer{margin-top:22px;background:var(--card);border-radius:var(--r-lg);padding:16px;text-align:center;box-shadow:var(--shadow)}
+.km .timer b{display:block;font-family:var(--display);font-size:44px;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.km .timer button{margin-top:8px;border:0;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:10px 22px;font-weight:700}
+.km .nav{display:flex;gap:10px;max-width:540px;margin:0 auto;width:100%;padding:0 20px calc(18px + env(safe-area-inset-bottom))}
+.km .nav button{flex:1;border:0;border-radius:999px;padding:16px;font-weight:700;font-size:17px;background:var(--sunk)}
+.km .nav button.next{background:var(--ink);color:var(--bg)}
+
+/* onboarding */
+.onb{position:fixed;inset:0;z-index:60;background:var(--bg);display:none;flex-direction:column;overflow:auto}
+.onb.open{display:flex}
+.onb .band{height:150px;flex:none;position:relative;background:#1A120D;overflow:hidden}
+.onb .band svg{width:100%;height:100%}
+.onb .band h2{text-shadow:0 2px 14px rgba(0,0,0,.85),0 0 3px rgba(0,0,0,.6);position:absolute;left:20px;bottom:14px;margin:0;color:#FFF7EC;font-family:var(--display);font-weight:800;font-size:30px;line-height:1;letter-spacing:-.02em}
+.onb .in{max-width:480px;margin:0 auto;width:100%;padding:16px 18px calc(20px + env(safe-area-inset-bottom))}
+.onb .q{margin:12px 0 6px;font-weight:700;font-size:15.5px}
+.onb .q small{display:block;font-weight:400;color:var(--muted);font-size:13px;margin-top:2px}
+.yt{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.yt button{border:1.5px solid var(--line);background:var(--card);border-radius:var(--r-md);padding:10px 6px;font-size:13.5px;font-weight:600}
+.yt button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+
+.toast{position:fixed;left:50%;top:calc(10px + env(safe-area-inset-top));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:14px;font-weight:600;opacity:0;transition:opacity .2s;pointer-events:none;z-index:70}
+.toast.on{opacity:1}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top"><svg class="logo" id="logo" viewBox="0 0 100 100" aria-hidden="true"></svg><h1>Rise</h1></div>
+
+  <!-- PLAN -->
+  <section id="v-plan">
+    <form class="ask" id="askForm">
+      <input id="ask" type="text" autocomplete="off" enterkeyhint="go" aria-label="Tell Rise what you're baking" placeholder="e.g. 4 Neapolitans, Sat at 7">
+      <button type="submit" class="go" aria-label="Work it out">Plan it</button>
+    </form>
+    <p class="heard" id="heard" hidden role="status"></p>
+    <div class="gtabs" id="gtabs" role="group" aria-label="Kind of dough"></div>
+    <div class="chips" id="chips"></div>
+
+    <div class="hero">
+      <div class="art" id="heroArt" aria-hidden="true"></div>
+      <div class="txt">
+        <button class="change" id="styleBtn" aria-haspopup="dialog">Change dough <svg class="i" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="n" id="styleName"></div>
+        <div class="m" id="styleMeta"></div>
+        <div class="when"><b id="headline"></b><span id="subline"></span></div>
+      </div>
+    </div>
+    <div class="actrow">
+      <button type="button" class="btn primary" id="adjBtn"><svg class="i" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Adjust</button>
+      <button type="button" class="btn dark" id="toSteps"><svg class="i" viewBox="0 0 24 24"><path d="M8 5l10 7-10 7z"/></svg>Start baking</button>
+      <button type="button" class="btn icon" id="saveBtn" aria-label="Save this bake"><svg class="i" viewBox="0 0 24 24"><path d="M6 4h12v17l-6-4-6 4z"/></svg></button>
+    </div>
+    <div class="seg lvquick" role="group" aria-label="Raised with"><button type="button" data-leaven="yeast">Instant yeast</button><button type="button" data-leaven="starter">Sourdough starter</button></div>
+    <div class="seg" role="group" aria-label="When"><button type="button" data-q="ahead">Plan ahead</button><button type="button" data-q="now">Start now</button></div>
+    <div class="hours qhours" id="qHours" hidden><div class="r"><span>Ready in</span><b id="qHrsVal"></b></div><input type="range" id="qHrsIn" min="2" max="72" step="1" aria-label="Hours until ready"></div>
+    <div id="warns"></div>
+
+    <div class="card">
+      <h2>Timeline</h2>
+      <div id="tbar"></div>
+      <div class="stats">
+        <div class="stat"><svg class="i" viewBox="0 0 24 24"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg><b id="stHyd"></b><small>hydration</small></div>
+        <div class="stat"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg><b id="stTotal"></b><small>start to ready</small></div>
+        <div class="stat"><svg class="i" viewBox="0 0 24 24"><path d="M12 2v20M4 7l16 10M20 7L4 17M9 4l3 2 3-2M9 20l3-2 3 2"/></svg><b id="stCold"></b><small>in the fridge</small></div>
+      </div>
+      <p class="note" id="keepNote"></p>
+    </div>
+
+    <div class="card">
+      <h2>You'll need</h2>
+      <ul class="equip" id="equip"></ul>
+    </div>
+
+    <div class="card">
+      <div class="h2row"><h2>What goes in</h2><label class="mini"><input type="checkbox" id="proSw" role="switch"> Pro view</label></div>
+      <p class="flourtip" id="flourTip"></p>
+      <div class="hydbox pro-only">
+        <div class="top2"><span><button type="button" class="term" data-term="0">Hydration</button> <small id="hydRecipe"></small></span><b id="hydVal"></b></div>
+        <div class="hydctl"><button type="button" class="rb" id="hMinus" aria-label="Drier">−</button><input type="range" id="hydIn" min="50" max="95" step="1" aria-label="Hydration"><button type="button" class="rb" id="hPlus" aria-label="Wetter">+</button></div>
+        <div class="hydhint" id="hydHint"></div>
+      </div>
+      <ul class="ing" id="ingTable"></ul>
+      <p class="note" id="ingNote"></p>
+    </div>
+    <p class="src pro-only" id="src"></p>
+    <p class="note simple-only" style="margin:4px 4px 0">Want baker's percentages, hydration and recipe sources? Turn on Pro view.</p>
+  </section>
+
+  <!-- STEPS -->
+  <section id="v-steps" hidden>
+    <div class="card">
+      <h2 id="stepsHead"></h2>
+      <div id="tbar2"></div>
+      <button type="button" class="btn primary" id="kmBtn" style="width:100%;margin-top:12px"><svg class="i" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>Kitchen mode</button>
+      <a class="btn" id="calAll" target="_blank" rel="noopener" style="width:100%;margin-top:8px;text-decoration:none"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg>Add reminders to Google Calendar</a>
+      <p class="note" style="margin-top:6px">The app can't alert you while it's closed, so add reminders before you start. <button type="button" class="linkbtn" id="copySched" style="font-size:13px;padding:0">Copy schedule</button></p>
+    </div>
+    <div class="card">
+      <p class="sub" id="stepsSub" style="margin:0"></p>
+      <ol class="tl" id="timeline"></ol>
+      <p class="note">Watch the dough as well as the clock. If it rises faster or slower than planned, move on when it looks right.</p>
+    </div>
+  </section>
+
+  <!-- BAKES -->
+  <section id="v-saved" hidden>
+    <div class="card"><h2>Your bakes</h2><p class="sub">Saved plans, with notes for next time.</p><ul class="saved" id="savedList"></ul></div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section id="v-settings" hidden>
+    <div class="card">
+      <h2>Settings</h2>
+      <p class="sub">These change the yeast, starter, water temperature and dough weights.</p>
+      <div class="seg" role="group" aria-label="Temperature unit">
+        <button type="button" data-unit="F">°F</button><button type="button" data-unit="C">°C</button>
+      </div>
+      <div class="slider"><div class="r"><span>Room temperature</span><b id="roomVal"></b></div><input type="range" id="roomIn" min="16" max="30" step="0.5"></div>
+      <div class="slider"><div class="r"><span>Fridge temperature</span><b id="fridgeVal"></b></div><input type="range" id="fridgeIn" min="1" max="8" step="0.5"></div>
+      <div class="slider"><div class="r"><span>Extra for dough loss</span><b id="lossVal"></b></div><input type="range" id="lossIn" min="0" max="5" step="0.5"></div>
+      <p class="note" style="margin:-6px 0 12px">A little dough always stays on the bowl and bench. This adds it back so your balls and loaves come out at full weight.</p>
+      <label class="field sel"><small>Yeast in your cupboard</small>
+        <select id="yeastType"><option value="IDY">Instant dry yeast</option><option value="ADY">Active dry yeast</option><option value="fresh">Fresh yeast</option></select></label>
+      <p class="note">Starter amounts assume a ripe 100% hydration starter (equal flour and water by weight).</p>
+ <label class="switch" style="margin-bottom:12px"><span>Pro view<small>Show baker's percentages, hydration and recipe sources</small></span><input type="checkbox" id="proSw2" role="switch"></label>
+      <button type="button" class="btn" id="rerunOnb" style="width:100%;margin-top:12px">Run kitchen setup again</button>
+    </div>
+  </section>
+</div>
+
+<nav class="tabs" role="tablist"><div class="w">
+  <button role="tab" data-view="plan" aria-selected="true"><svg class="i" viewBox="0 0 24 24"><path d="M4 13c0-4 3.6-7 8-7s8 3 8 7v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M9 10l-1 3M13 9.5l-1 3.5M17 10l-1 3"/></svg>Plan</button>
+  <button role="tab" data-view="steps" aria-selected="false"><svg class="i" viewBox="0 0 24 24"><path d="M4 6l2 2 3-3M4 13l2 2 3-3M12 7h8M12 14h8M12 20h8M4 20h3"/></svg>Steps</button>
+  <button role="tab" data-view="saved" aria-selected="false"><svg class="i" viewBox="0 0 24 24"><path d="M6 4h12v17l-6-4-6 4z"/></svg>Bakes</button>
+  <button role="tab" data-view="settings" aria-selected="false"><svg class="i" viewBox="0 0 24 24"><path d="M10 14V5a2 2 0 1 1 4 0v9a4 4 0 1 1-4 0z"/><path d="M12 11v6"/></svg>Settings</button>
+</div></nav>
+
+<!-- dough picker -->
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="in"><div class="grab"></div><h3 id="sheetTitle">What are you making?</h3><div id="sheetBody"></div></div>
+</div>
+
+<!-- adjust -->
+<div class="sheet" id="adjust" role="dialog" aria-modal="true" aria-labelledby="adjTitle">
+  <div class="in"><div class="grab"></div>
+    <h3 id="adjTitle">Adjust <button type="button" id="adjClose">Done</button></h3>
+    <div class="adjsum" id="adjSum"></div>
+
+    <div class="grp">HOW MUCH</div>
+    <div class="grid2">
+      <div class="stepper"><button type="button" class="rb" id="cMinus" aria-label="Fewer">−</button><div class="v"><b id="cVal"></b><small id="cLbl"></small></div><button type="button" class="rb" id="cPlus" aria-label="More">+</button></div>
+      <div class="stepper"><button type="button" class="rb" id="sMinus" aria-label="Smaller">−</button><div class="v"><b id="sVal"></b><small id="sLbl"></small></div><button type="button" class="rb" id="sPlus" aria-label="Bigger">+</button></div>
+    </div>
+
+    <div class="grp">RAISED WITH</div>
+    <div class="lv">
+      <button type="button" data-leaven="yeast"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 5h18l-2 22H9z" fill="var(--sunk)"/><path d="M7 5l2 4h14l2-4"/><circle cx="13" cy="17" r="1.4" fill="currentColor"/><circle cx="18" cy="20" r="1.4" fill="currentColor"/><circle cx="17" cy="14" r="1.1" fill="currentColor"/></svg><b>Instant yeast</b><span>Reliable, mild flavour</span></button>
+      <button type="button" data-leaven="starter"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="8" y="9" width="16" height="19" rx="4" fill="var(--sunk)"/><rect x="10" y="4" width="12" height="5" rx="1.5"/><path d="M8 17c3 2 5-1 8 1s5-1 8 0" /><circle cx="13" cy="22" r="1.2" fill="currentColor"/><circle cx="19" cy="24" r="1" fill="currentColor"/></svg><b>Sourdough starter</b><span>Tangier, slower</span></button>
+    </div>
+    <label class="check" id="ripeRow"><input type="checkbox" id="ripeIn"> My starter is already ripe and ready</label>
+    <button type="button" class="linkbtn" id="noStarter">Don't have a starter?</button>
+
+    <div class="grp">WHEN</div>
+    <label class="switch"><span>Start now<small>Instead of picking a ready time</small></span><input type="checkbox" id="nowSw" role="switch"></label>
+    <div id="modeReady" style="margin-top:8px">
+      <div class="grid2">
+        <label class="field tfield"><small>Ready</small><b id="eatTxt"></b><input type="datetime-local" id="eatIn" aria-label="Ready time"></label>
+        <label class="field tfield"><small>Start mixing</small><b id="startTxt"></b><input type="datetime-local" id="startIn" aria-label="Start time"></label>
+      </div>
+      <button type="button" class="linkbtn" id="recBtn"></button>
+    </div>
+    <div id="modeHours" class="hours" hidden>
+      <div class="r"><span>Ready in</span><b id="hrsVal"></b></div>
+      <input type="range" id="hrsIn" min="2" max="72" step="1" aria-label="Hours until ready">
+    </div>
+
+    <div class="grp">KITCHEN</div>
+    <div class="grid2">
+      <label class="field sel" id="ovenField"><small>Oven</small><select id="ovenIn"><option value="home">Home oven</option><option value="pizza">Pizza oven</option></select></label>
+      <label class="field sel"><small>Mixing</small><select id="mixIn"><option value="hand">By hand</option><option value="mixer">Stand mixer</option></select></label>
+    </div>
+    <div class="krow"><div><small>Room temperature</small><b id="kTemp"></b></div><div class="bt"><button type="button" class="rb" id="kMinus" aria-label="Cooler">−</button><button type="button" class="rb" id="kPlus" aria-label="Warmer">+</button></div></div>
+    <div class="slider" style="margin-top:12px"><div class="r"><span>Salt</span><b id="saltVal"></b></div><input type="range" id="saltIn" min="1.2" max="3.2" step="0.1" aria-label="Salt"></div>
+    <button type="button" class="linkbtn" id="resetTech">Reset salt and hydration to the recipe</button>
+  </div>
+</div>
+
+<!-- onboarding -->
+<div class="onb" id="onb" role="dialog" aria-modal="true" aria-label="Kitchen setup">
+  <div class="band"><div id="onbArt" style="position:absolute;inset:0"></div><h2>Let's set up<br>your kitchen</h2></div>
+  <div class="in">
+    <p class="sub">Three quick questions. They change how much yeast or starter you need, so the timing comes out right.</p>
+    <div class="seg" role="group" aria-label="Temperature unit"><button type="button" data-unit="F">°F</button><button type="button" data-unit="C">°C</button></div>
+    <div class="q">How warm is your kitchen?<small>Where the dough will sit. Most homes are 68–72°F (20–22°C).</small></div>
+    <div class="krow"><div><b id="onbRoom"></b></div><div class="bt"><button type="button" class="rb" id="onbRm">−</button><button type="button" class="rb" id="onbRp">+</button></div></div>
+    <div class="q">How cold is your fridge?<small>If you don't know, leave it at 39°F (4°C).</small></div>
+    <div class="krow"><div><b id="onbFr"></b></div><div class="bt"><button type="button" class="rb" id="onbFm">−</button><button type="button" class="rb" id="onbFp">+</button></div></div>
+    <div class="q">Which yeast do you have?</div>
+    <div class="yt"><button type="button" data-yt="IDY">Instant</button><button type="button" data-yt="ADY">Active dry</button><button type="button" data-yt="fresh">Fresh</button></div>
+    <button type="button" class="btn primary" id="onbDone" style="width:100%;margin-top:20px">Start planning</button>
+  </div>
+</div>
+
+<div class="sheet" id="termSheet" role="dialog" aria-modal="true" aria-labelledby="termTitle">
+  <div class="in"><div class="grab"></div><h3 id="termTitle"><span id="termName"></span><button type="button" id="termClose">Got it</button></h3><p class="sub" id="termText" style="font-size:16px"></p><div id="termMore"></div></div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<div class="km" id="km" role="dialog" aria-modal="true" aria-label="Kitchen mode">
+  <div class="band"><div class="art" id="kmArt"></div><div class="bar"><span id="kmCount"></span><button type="button" id="kmClose">Done</button></div></div>
+  <div class="body"><div class="when" id="kmWhen"></div><h3 id="kmTitle"></h3><p id="kmText"></p>
+    <div class="timer" id="kmTimer"><b id="kmClock"></b><button type="button" id="kmGo">Start timer</button></div></div>
+  <div class="nav"><button type="button" id="kmPrev">Back</button><button type="button" class="next" id="kmNext">Done, next step</button></div>
+</div>
+
+<script>
+
+/* ---------- Illustrations (all drawn in a 100×100 box) ---------- */
+const ART = (() => {
+  let n = 0;
+  const uid = () => 'a' + (++n);
+  const crustG = (id, a, b, c) => `<radialGradient id="${id}" cx="45%" cy="38%" r="68%"><stop offset="0" stop-color="${a}"/><stop offset=".62" stop-color="${b}"/><stop offset="1" stop-color="${c}"/></radialGradient>`;
+  const dust = (pts, op=.55) => pts.map(([x,y,r])=>`<circle cx="${x}" cy="${y}" r="${r}" fill="#FFF6E6" opacity="${op}"/>`).join('');
+  const rnd = (seed => () => (seed = (seed*9301+49297)%233280)/233280);
+
+  function neapolitan(){
+    const c=uid(), s=uid(); const r=rnd(7);
+    let char=''; for(let i=0;i<16;i++){const a=i/16*Math.PI*2+r()*0.3, rr=40+r()*3; char+=`<circle cx="${50+Math.cos(a)*rr}" cy="${50+Math.sin(a)*rr}" r="${1.2+r()*2.2}" fill="#3A2216" opacity="${.5+r()*.4}"/>`;}
+    return `<defs>${crustG(c,'#F6D9A2','#E2A75C','#B06A2A')}<radialGradient id="${s}" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#D94A2B"/><stop offset="1" stop-color="#A42C1A"/></radialGradient></defs>
+    <circle cx="50" cy="50" r="45" fill="url(#${c})"/>${char}
+    <circle cx="50" cy="50" r="33" fill="url(#${s})"/>
+    <path d="M33 36c4-5 12-3 12 3s-9 7-12 4-2-5 0-7z" fill="#FFF7EA"/><path d="M57 31c5-3 11 1 9 6s-9 4-10 0 0-5 1-6z" fill="#FFF7EA"/>
+    <path d="M54 55c5-4 13 0 11 6s-10 7-12 2 -1-6 1-8z" fill="#FFF7EA"/><path d="M33 58c3-3 9-1 8 4s-7 5-9 2-1-4 1-6z" fill="#FFF7EA"/>
+    <ellipse cx="47" cy="49" rx="6" ry="3" fill="#3F7D3A" transform="rotate(-30 47 49)"/><ellipse cx="66" cy="46" rx="5" ry="2.6" fill="#4C8C42" transform="rotate(40 66 46)"/><ellipse cx="42" cy="68" rx="5" ry="2.6" fill="#3F7D3A" transform="rotate(15 42 68)"/>`;
+  }
+  function ny(){
+    const c=uid(); const r=rnd(3); let pep='';
+    [[36,36],[62,32],[68,56],[44,62],[52,46],[30,52],[58,70]].forEach(([x,y])=>{pep+=`<circle cx="${x}" cy="${y}" r="6.2" fill="#A3301E"/><circle cx="${x-1.5}" cy="${y-1.5}" r="1" fill="#D2533A"/><circle cx="${x+2}" cy="${y+1.5}" r=".8" fill="#6E1E12"/>`});
+    let melt=''; for(let i=0;i<14;i++) melt+=`<circle cx="${22+r()*56}" cy="${22+r()*56}" r="${1.5+r()*2.5}" fill="#E39A3E" opacity=".55"/>`;
+    return `<defs>${crustG(c,'#EBC27E','#D59A50','#A9672B')}</defs>
+    <circle cx="50" cy="50" r="46" fill="url(#${c})"/><circle cx="50" cy="50" r="39" fill="#C2432A"/><circle cx="50" cy="50" r="37" fill="#F1C46A"/>${melt}${pep}`;
+  }
+  function focaccia(){
+    const c=uid(); let d=''; const r=rnd(5);
+    for(let row=0;row<3;row++)for(let col=0;col<6;col++){const x=18+col*13+(row%2)*5,y=34+row*13; d+=`<ellipse cx="${x}" cy="${y}" rx="3.2" ry="2.2" fill="#A86A2C" opacity=".75"/><ellipse cx="${x}" cy="${y-.6}" rx="2" ry="1.1" fill="#F7D79E" opacity=".7"/>`;}
+    let herbs=''; for(let i=0;i<7;i++){const x=16+r()*68,y=28+r()*42,a=r()*180; herbs+=`<path d="M${x-4} ${y}h8" stroke="#3E6E33" stroke-width="1.6" stroke-linecap="round" transform="rotate(${a} ${x} ${y})"/>`;}
+    let salt=''; for(let i=0;i<22;i++) salt+=`<rect x="${14+r()*72}" y="${26+r()*46}" width="1.6" height="1.6" fill="#FFFFFF" opacity=".9" transform="rotate(${r()*90})" transform-origin="center"/>`;
+    return `<defs><linearGradient id="${c}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F0C578"/><stop offset=".7" stop-color="#D99B4C"/><stop offset="1" stop-color="#A9672B"/></linearGradient></defs>
+    <rect x="7" y="20" width="86" height="60" rx="11" fill="#2B2B2E"/><rect x="10" y="22" width="80" height="55" rx="9" fill="url(#${c})"/>${d}${herbs}${salt}`;
+  }
+  function sourdough(){
+    const c=uid(), f=uid();
+    return `<defs>${crustG(c,'#D59457','#9C5A27','#5E3216')}<radialGradient id="${f}" cx="40%" cy="30%" r="55%"><stop offset="0" stop-color="#FFF4E0" stop-opacity=".55"/><stop offset="1" stop-color="#FFF4E0" stop-opacity="0"/></radialGradient></defs>
+    <ellipse cx="50" cy="56" rx="42" ry="34" fill="url(#${c})"/><ellipse cx="50" cy="56" rx="42" ry="34" fill="url(#${f})"/>
+    <path d="M24 46c12-11 38-14 54-4" stroke="#4A2410" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M25 44c12-10 37-13 53-4" stroke="#F3D7A6" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M30 70c8 4 30 5 42-1" stroke="#FFF1DA" stroke-width="1.4" fill="none" opacity=".5"/>`;
+  }
+  function ciabatta(){
+    const c=uid(); const r=rnd(11); let fl='';
+    for(let i=0;i<40;i++) fl+=`<circle cx="${14+r()*72}" cy="${40+r()*28}" r="${.6+r()*1.6}" fill="#FFF8EC" opacity="${.35+r()*.5}"/>`;
+    return `<defs><linearGradient id="${c}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EDD3A4"/><stop offset=".6" stop-color="#D2A066"/><stop offset="1" stop-color="#A06A34"/></linearGradient></defs>
+    <path d="M9 58C8 41 26 34 50 36c24-2 42 4 41 21 0 14-16 19-41 18C26 76 10 72 9 58z" fill="url(#${c})"/>${fl}
+    <path d="M20 50c8-4 18-5 26-3M54 48c9-2 17-1 24 3" stroke="#B98547" stroke-width="1.5" fill="none" opacity=".6" stroke-linecap="round"/>`;
+  }
+  function overnight(){
+    const c=uid(); const r=rnd(13); let fl='';
+    for(let i=0;i<26;i++) fl+=`<circle cx="${30+r()*40}" cy="${30+r()*20}" r="${.6+r()*1.4}" fill="#FFF8EC" opacity="${.4+r()*.5}"/>`;
+    return `<defs>${crustG(c,'#E9BE7C','#C2803D','#8A4E20')}</defs>
+    <rect x="4" y="56" width="12" height="7" rx="3.5" fill="#222225"/><rect x="84" y="56" width="12" height="7" rx="3.5" fill="#222225"/>
+    <path d="M12 50h76v26a12 12 0 0 1-12 12H24a12 12 0 0 1-12-12z" fill="#2C2C30"/>
+    <ellipse cx="50" cy="50" rx="38" ry="9" fill="#18181B"/>
+    <ellipse cx="50" cy="45" rx="31" ry="19" fill="url(#${c})"/>${fl}
+    <path d="M37 40c8-5 18-5 26 0" stroke="#F4DAB0" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M18 64c10 2 54 2 64 0" stroke="#45454A" stroke-width="1.5" fill="none"/>`;
+  }
+  function baguette(){
+    const c=uid(); let sc='';
+    [20,34,48,62,76].forEach(x=>{sc+=`<ellipse cx="${x}" cy="50" rx="6.5" ry="2.6" fill="#F4D49C" transform="rotate(-28 ${x} 50)"/><path d="M${x-5} ${53} q5 -1 9 -6" stroke="#7A4219" stroke-width="1.1" fill="none" opacity=".7"/>`});
+    return `<defs><linearGradient id="${c}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E8B26A"/><stop offset=".55" stop-color="#C98340"/><stop offset="1" stop-color="#8E5121"/></linearGradient></defs>
+    <g transform="rotate(-18 50 50)"><rect x="3" y="40" width="94" height="20" rx="10" fill="url(#${c})"/>${sc}<rect x="8" y="42" width="84" height="3" rx="1.5" fill="#FFF0D4" opacity=".35"/></g>`;
+  }
+  function french(){
+    const c=uid(); let sc='';
+    [32,50,68].forEach(x=>{sc+=`<path d="M${x-9} 58 q9 -5 16 -16" stroke="#F3D49E" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M${x-8} 61 q9 -5 16 -16" stroke="#7A4219" stroke-width="1.2" fill="none" opacity=".6"/>`});
+    return `<defs><linearGradient id="${c}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ECB873"/><stop offset=".55" stop-color="#CC8642"/><stop offset="1" stop-color="#93541F"/></linearGradient></defs>
+    <rect x="10" y="32" width="80" height="36" rx="18" fill="url(#${c})"/>${sc}<path d="M20 37c15-4 45-4 60 0" stroke="#FFF2DA" stroke-width="2" opacity=".4" fill="none" stroke-linecap="round"/>`;
+  }
+  function detroit(){
+    const c=uid(); let pep=''; [[28,40],[50,36],[72,42],[38,58],[62,60]].forEach(([x,y])=>pep+=`<circle cx="${x}" cy="${y}" r="5" fill="#A3301E"/><circle cx="${x-1}" cy="${y-1.4}" r="1.2" fill="#D2533A"/>`);
+    return `<defs><linearGradient id="${c}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2C46A"/><stop offset="1" stop-color="#E0A245"/></linearGradient></defs>
+    <rect x="6" y="20" width="88" height="62" rx="5" fill="#3A3A3E"/><rect x="10" y="24" width="80" height="54" rx="3" fill="#5A2E14"/>
+    <rect x="13" y="27" width="74" height="48" rx="2" fill="url(#${c})"/>
+    <path d="M13 30h74M13 72h74" stroke="#7A3A12" stroke-width="5" opacity=".7"/>${pep}
+    <path d="M22 34v36M42 34v36M62 34v36M80 34v36" stroke="#B9311C" stroke-width="5" stroke-linecap="round" opacity=".85"/>`;
+  }
+  function pan(){
+    return `<circle cx="50" cy="52" r="44" fill="#232326"/><rect x="88" y="46" width="12" height="10" rx="4" fill="#232326"/><circle cx="50" cy="52" r="40" fill="#141416"/><g transform="translate(9 11) scale(.82)">${ny()}</g>`;
+  }
+  function sandwich(){
+    const c=uid();
+    return `<defs><linearGradient id="${c}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E5A458"/><stop offset=".5" stop-color="#C98340"/><stop offset="1" stop-color="#9A5A24"/></linearGradient></defs>
+    <path d="M14 52c0-16 14-24 36-24s36 8 36 24v26a6 6 0 0 1-6 6H20a6 6 0 0 1-6-6z" fill="url(#${c})"/>
+    <path d="M22 44c8-8 48-8 56 0" stroke="#F4D3A0" stroke-width="3" fill="none" opacity=".6" stroke-linecap="round"/>
+    <rect x="14" y="56" width="72" height="3" fill="#8A4D1E" opacity=".25"/>`;
+  }
+  function bun(seed=1){
+    const c=uid(); const r=rnd(seed*7); let s=''; for(let i=0;i<26;i++){const a=r()*Math.PI*2, d=r()*28; s+=`<ellipse cx="${50+Math.cos(a)*d*1.2}" cy="${48+Math.sin(a)*d*0.55}" rx="1.6" ry=".8" fill="#FFF3DC" transform="rotate(${r()*180} ${50+Math.cos(a)*d*1.2} ${48+Math.sin(a)*d*0.55})"/>`;}
+    return `<defs><radialGradient id="${c}" cx="45%" cy="30%" r="70%"><stop offset="0" stop-color="#F2BE72"/><stop offset=".6" stop-color="#D08A3E"/><stop offset="1" stop-color="#93501C"/></radialGradient></defs>
+    <path d="M10 64c0-22 18-36 40-36s40 14 40 36c0 6-5 10-11 10H21c-6 0-11-4-11-10z" fill="url(#${c})"/>${s}
+    <path d="M14 68h72" stroke="#7A4219" stroke-width="2" opacity=".35"/>`;
+  }
+  function buns(){ return bun(3); }
+  function brioche(){
+    const c=uid();
+    const lobe=(x)=>`<ellipse cx="${x}" cy="44" rx="15" ry="16" fill="url(#${c})"/><ellipse cx="${x-4}" cy="38" rx="5" ry="3" fill="#FFE2B0" opacity=".45"/>`;
+    return `<defs><radialGradient id="${c}" cx="40%" cy="30%" r="70%"><stop offset="0" stop-color="#C77A33"/><stop offset=".6" stop-color="#8E4818"/><stop offset="1" stop-color="#5E2C0C"/></radialGradient></defs>
+    <rect x="12" y="46" width="76" height="34" rx="6" fill="#6B6B70"/><rect x="14" y="48" width="72" height="30" rx="5" fill="#8A8A90"/>
+    ${lobe(26)}${lobe(50)}${lobe(74)}<rect x="14" y="52" width="72" height="5" fill="#5E2C0C" opacity=".35"/>`;
+  }
+  function cinnamon(){
+    const c=uid(); let sp='M50 50'; for(let t=0;t<16;t+=0.3){const r=1.9*t; sp+=` L${50+Math.cos(t)*r} ${50+Math.sin(t)*r}`;}
+    return `<defs><radialGradient id="${c}" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#F0C489"/><stop offset=".75" stop-color="#D99A55"/><stop offset="1" stop-color="#A5642A"/></radialGradient></defs>
+    <circle cx="50" cy="50" r="34" fill="url(#${c})"/>
+    <path d="${sp}" fill="none" stroke="#7A3E16" stroke-width="3" stroke-linecap="round" opacity=".85"/>
+    <path d="M24 38c8 6 18-4 26 2s14 4 22-2M22 54c10 6 20-4 30 2s16 6 26-2M30 68c8 4 16-2 24 2s10 2 16-2" stroke="#FFFBF2" stroke-width="4.5" fill="none" stroke-linecap="round" opacity=".95"/>`;
+  }
+  function bagels(){
+    const c=uid(); const r=rnd(5); let s=''; for(let i=0;i<40;i++){const a=r()*Math.PI*2, d=18+r()*16; s+=`<ellipse cx="${50+Math.cos(a)*d}" cy="${50+Math.sin(a)*d*0.82}" rx="1.4" ry=".7" fill="#FFF1D2" transform="rotate(${r()*180} ${50+Math.cos(a)*d} ${50+Math.sin(a)*d*0.82})"/>`;}
+    return `<defs><radialGradient id="${c}" cx="45%" cy="35%" r="70%"><stop offset="0" stop-color="#E8A658"/><stop offset=".6" stop-color="#B86C2C"/><stop offset="1" stop-color="#7C3E14"/></radialGradient><mask id="m${c}"><rect width="100" height="100" fill="#fff"/><ellipse cx="50" cy="50" rx="11" ry="9" fill="#000"/></mask></defs>
+    <ellipse cx="50" cy="50" rx="38" ry="32" fill="url(#${c})" mask="url(#m${c})"/>${s}
+    <ellipse cx="50" cy="50" rx="11" ry="9" fill="none" stroke="#6A3410" stroke-width="2" opacity=".6"/>`;
+  }
+  function naan(){
+    const c=uid(); const r=rnd(9); let ch=''; for(let i=0;i<16;i++) ch+=`<ellipse cx="${22+r()*56}" cy="${28+r()*44}" rx="${2+r()*4}" ry="${1.5+r()*2.5}" fill="#5A2E12" opacity="${.45+r()*.4}"/>`;
+    return `<defs><radialGradient id="${c}" cx="45%" cy="40%" r="70%"><stop offset="0" stop-color="#F6E1B5"/><stop offset=".7" stop-color="#E8C58A"/><stop offset="1" stop-color="#C99A58"/></radialGradient></defs>
+    <path d="M18 30c18-14 56-12 66 10s-4 40-30 42S8 70 10 52s0-16 8-22z" fill="url(#${c})"/>${ch}
+    <path d="M30 40c10-4 24-4 34 2" stroke="#FFF6E0" stroke-width="2.5" fill="none" opacity=".6" stroke-linecap="round"/>`;
+  }
+  function pita(){
+    const c=uid(); const r=rnd(4); let ch=''; for(let i=0;i<8;i++) ch+=`<ellipse cx="${26+r()*48}" cy="${30+r()*40}" rx="${2+r()*3}" ry="${1.5+r()*2}" fill="#B9874A" opacity=".6"/>`;
+    return `<defs><radialGradient id="${c}" cx="45%" cy="38%" r="65%"><stop offset="0" stop-color="#FAEBCB"/><stop offset=".75" stop-color="#EBD09C"/><stop offset="1" stop-color="#C9A266"/></radialGradient></defs>
+    <ellipse cx="52" cy="56" rx="40" ry="30" fill="#8C6A3C" opacity=".35"/><ellipse cx="50" cy="52" rx="40" ry="32" fill="url(#${c})"/>${ch}
+    <path d="M24 42c12-10 40-10 52 0" stroke="#FFF8E8" stroke-width="3" fill="none" opacity=".7" stroke-linecap="round"/>`;
+  }
+
+  const draw = {pan, neapolitan, ny, focaccia, sourdough, ciabatta, overnight, baguette, french, detroit, sandwich, buns, brioche, cinnamon, bagels, naan, pita};
+  const PHOTOS=new Set(['pan','neapolitan','ny','focaccia','sourdough','ciabatta','overnight','baguette','french','sandwich','bagels','buns','brioche','naan','pita','detroit','cinnamon']);
+  const POS={neapolitan:'50% 50%',ny:'50% 40%',focaccia:'50% 52%',sourdough:'45% 66%',overnight:'45% 50%',ciabatta:'50% 42%',baguette:'50% 58%',french:'45% 62%',sandwich:'50% 45%',bagels:'50% 45%',buns:'50% 50%',brioche:'50% 50%',naan:'50% 50%',pita:'50% 55%',detroit:'50% 40%',pan:'45% 45%',cinnamon:'45% 45%'};
+  function icon(style, cls=''){ return PHOTOS.has(style) ? `<img class="ph ${cls}" src="img/${style}-t.jpg" alt="" loading="lazy">` : `<svg class="ph art ${cls}" viewBox="-8 -8 116 116" aria-hidden="true">${draw[style]()}</svg>`; }
+  function photo(style){ if(!PHOTOS.has(style)) return hero(style); return `<div class="photo" style="background-image:url('img/${style}.jpg');background-position:${POS[style]}"></div><div class="scrim"></div>`; }
+  function strip(){ return `<div class="strip">${['neapolitan','sourdough','baguette','focaccia'].map(s=>`<div style="background-image:url('img/${s}.jpg');background-position:${POS[s]}"></div>`).join('')}</div><div class="scrim b"></div>`; }
+  function wheat(x, y, s, rot, op){
+    let k=''; for(let i=0;i<6;i++){ k+=`<ellipse cx="${-4}" cy="${-i*9}" rx="3" ry="6" transform="rotate(-25 -4 ${-i*9})"/><ellipse cx="4" cy="${-i*9-4}" rx="3" ry="6" transform="rotate(25 4 ${-i*9-4})"/>`; }
+    return `<g transform="translate(${x} ${y}) rotate(${rot}) scale(${s})" fill="#E9C68F" opacity="${op}"><path d="M0 0v60" stroke="#E9C68F" stroke-width="1.4"/>${k}</g>`;
+  }
+  // Wide scene: dark oven-stone backdrop, warm glow, board, the bread on the right.
+  function hero(style, opts={}){
+    const g=uid(), v=uid(), b=uid(); const r=rnd(style.length*17);
+    let specks=''; for(let i=0;i<46;i++) specks+=`<circle cx="${r()*360}" cy="${r()*190}" r="${.4+r()*1.2}" fill="#FFE9C9" opacity="${.08+r()*.22}"/>`;
+    const pizza = style==='neapolitan'||style==='ny';
+    const board = pizza
+      ? `<ellipse cx="262" cy="104" rx="98" ry="92" fill="#6E4524"/><ellipse cx="262" cy="100" rx="94" ry="88" fill="#8A5A30"/><rect x="340" y="88" width="40" height="22" rx="10" fill="#7A4D27"/>`
+      : `<rect x="160" y="40" width="210" height="140" rx="14" fill="#6E4524" transform="rotate(-6 265 110)"/><rect x="164" y="40" width="204" height="132" rx="12" fill="#86562D" transform="rotate(-6 265 106)"/>`;
+    const tx = opts.center ? 105 : 186, sc = opts.center ? 1.5 : 1.55;
+    return `<svg viewBox="0 0 360 190" preserveAspectRatio="xMaxYMid slice" aria-hidden="true"><defs>
+      <linearGradient id="${g}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2B1C13"/><stop offset="1" stop-color="#0F0A07"/></linearGradient>
+      <radialGradient id="${v}" cx="72%" cy="52%" r="55%"><stop offset="0" stop-color="#F2A653" stop-opacity=".55"/><stop offset=".55" stop-color="#B9611F" stop-opacity=".18"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+      <linearGradient id="${b}" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#140D09" stop-opacity=".92"/><stop offset=".55" stop-color="#140D09" stop-opacity=".35"/><stop offset="1" stop-color="#140D09" stop-opacity="0"/></linearGradient></defs>
+      <rect width="360" height="190" fill="url(#${g})"/><rect width="360" height="190" fill="url(#${v})"/>${specks}
+      ${opts.center?'':board}
+      <g transform="translate(${tx} 18) scale(${sc})"><ellipse cx="50" cy="${pizza?54:62}" rx="44" ry="${pizza?44:30}" fill="#000" opacity=".35" transform="translate(4 6)"/>${draw[style]()}</g>
+      ${wheat(30,182,1,-12,.18)}${wheat(52,190,.8,8,.12)}
+      ${opts.center?'':`<rect width="360" height="190" fill="url(#${b})"/>`}
+    </svg>`;
+  }
+  function collage(){
+    const g=uid(), v=uid();
+    const items=[['sourdough',-10,30,1.1],['neapolitan',80,60,1.05],['baguette',180,10,1.2],['focaccia',250,80,1.05],['french',30,120,.9],['ny',300,-10,1]];
+    return `<svg viewBox="0 0 360 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="${g}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2B1C13"/><stop offset="1" stop-color="#0F0A07"/></linearGradient>
+      <linearGradient id="${v}" x1="0" y1="0" x2="0" y2="1"><stop offset=".35" stop-color="#140D09" stop-opacity="0"/><stop offset="1" stop-color="#140D09" stop-opacity=".9"/></linearGradient></defs>
+      <rect width="360" height="200" fill="url(#${g})"/>${items.map(([s,x,y,k])=>`<g transform="translate(${x} ${y}) scale(${k})" opacity=".92">${draw[s]()}</g>`).join('')}<rect width="360" height="200" fill="url(#${v})"/></svg>`;
+  }
+  function logo(){ return `<defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3B2416"/><stop offset="1" stop-color="#170E09"/></linearGradient>
+    <radialGradient id="glow" cx="50%" cy="78%" r="60%"><stop offset="0" stop-color="#F2A653" stop-opacity=".55"/><stop offset="1" stop-color="#F2A653" stop-opacity="0"/></radialGradient>
+    <linearGradient id="crust" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3C47E"/><stop offset=".55" stop-color="#D88E45"/><stop offset="1" stop-color="#9C5420"/></linearGradient>
+    <linearGradient id="ear" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFF1D6"/><stop offset="1" stop-color="#F6D6A0"/></linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="24" fill="url(#bg)"/>
+  <rect width="100" height="100" rx="24" fill="url(#glow)"/>
+  
+  <g fill="none" stroke="#F6D6A0" stroke-width="3.6" stroke-linecap="round" opacity=".9">
+    <path d="M38 33c-4-5 4-8 0-14"/><path d="M50 30c-4-5 4-8 0-15"/><path d="M62 33c-4-5 4-8 0-14"/>
+  </g>
+  
+  <path d="M17 72c0-17 15-29 33-29s33 12 33 29c0 4-3 6-7 6H24c-4 0-7-2-7-6z" fill="url(#crust)"/>
+  
+  <path d="M30 60c8-9 25-12 41-5" fill="none" stroke="#6B3514" stroke-width="3" stroke-linecap="round"/>
+  <path d="M30 57.5c8-9 25-12 41-5" fill="none" stroke="url(#ear)" stroke-width="4.4" stroke-linecap="round"/>
+  <path d="M24 74h52" stroke="#7A3F18" stroke-width="2" stroke-linecap="round" opacity=".5"/>`; }
+  return {icon, hero, collage, logo, draw, photo, strip};
+})();
+
+(() => {
+'use strict';
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const HR = 3600e3;
+
+/* ---------- Recipe bases (baker's % of total flour) ---------- */
+const STYLES = {
+  neapolitan:{flourName:'00 pizza flour (bread flour works too)',bakeH:0.25,name:'Neapolitan',group:'Pizza',kind:'pizza',hyd:62,salt:2.5,oil:0,sugar:0,
+    density:2.21,sizes:[10,12,14],defSize:1,defHours:34,bakeLead:0.25,goodFor:3,
+    ball:'radial-gradient(circle at 35% 35%,#F6E7C8 0 18%,transparent 19%),radial-gradient(circle at 62% 58%,#F8F0DE 0 14%,transparent 15%),radial-gradient(circle,#C8432B 0 62%,#E8C38E 63% 100%)',
+    blurb:'Soft, puffy rim. Flour, water, salt, yeast.',
+    src:'Classic Neapolitan formula: hydration in the traditional 55–62% band and 2–3% salt, no oil or sugar.',
+    links:[['Neapolitan spec','https://goop.com/recipes/neapolitanish-pizza-dough/'],['Dough ratios','https://production.matthewmarks.com/?p=15052']]},
+  ny:{recipeLeaven:'10 g instant yeast (1.6%)',flourName:'Bread flour',bakeH:0.25,name:'New York',group:'Pizza',kind:'pizza',hyd:66.5,salt:1.6,oil:5,sugar:2.4,
+    density:3.3,sizes:[12,14,16],defSize:0,defHours:26,bakeLead:0.25,goodFor:3,
+    ball:'radial-gradient(circle at 40% 40%,#F2D27A 0 20%,transparent 21%),radial-gradient(circle,#E0A33A 0 64%,#D9A86A 65% 100%)',
+    blurb:'Thin, foldable, crisp. A little oil and sugar.',
+    src:'J. Kenji López-Alt\'s Serious Eats NY dough: 638 g bread flour, 425 g water, 15 g sugar, 10 g salt, 3 tbsp olive oil, cold-fermented 1–5 days.',
+    links:[['Serious Eats NY dough','https://www.surlatable.com/recipe/new-york-style-pizza-dough/REC-236776']]},
+  focaccia:{recipeLeaven:'½ tsp active dry yeast',flourName:'All-purpose flour',bakeH:0.5,name:'Focaccia',group:'Bread',kind:'tray',hyd:75,salt:2.25,oil:6.25,sugar:1.9,sweet:'Honey',
+    sizes:['9×13 in pan','Half sheet pan'],flourPer:[400,800],defSize:1,defHours:14,bakeLead:0.75,goodFor:6,brine:true,
+    ball:'radial-gradient(circle at 30% 35%,#7A8B3A 0 6%,transparent 7%),radial-gradient(circle at 65% 60%,#7A8B3A 0 5%,transparent 6%),radial-gradient(circle at 55% 30%,#FFF 0 4%,transparent 5%),radial-gradient(circle,#E9B860 0 100%)',
+    blurb:'Olive-oily, dimpled, brined. Samin Nosrat\'s.',
+    src:'Samin Nosrat\'s Ligurian focaccia (Salt Fat Acid Heat): 800 g flour, 600 g water, 15 g honey, 18 g kosher salt, 50 g olive oil, plus a brine of 80 g water and 5 g salt. Her full batch is the "Half sheet" option here.',
+    links:[['Samin\'s recipe','https://ciaosamin.com/recipes/ligurian-foccia']]},
+  sourdough:{recipeLeaven:'200 g levain (about 18% of total flour)',flourName:'All-purpose flour, with 10% whole wheat',bakeH:0.75,name:'Sourdough loaf',short:'Sourdough',group:'Bread',kind:'loaf',hyd:77,salt:1.8,oil:0,sugar:0,ww:10,
+    sizes:['Small boule','Large boule'],flourPer:[360,550],defSize:1,defHours:24,bakeLead:2,goodFor:24,
+    ball:'repeating-linear-gradient(35deg,transparent 0 9px,rgba(255,240,210,.55) 9px 11px),radial-gradient(circle,#B9763A 0 70%,#8C5228 100%)',
+    blurb:'Open crumb, crackly crust. Tartine\'s country loaf.',
+    src:'Tartine Basic Country Bread (Chad Robertson): 900 g white + 100 g whole wheat, 750 g water, 200 g levain, 20 g salt. That\'s 75% hydration as written, about 77% once the levain is counted, which is what this uses.',
+    links:[['Tartine formula breakdown','https://www.thefreshloaf.com/comment/277782']]},
+  ciabatta:{recipeLeaven:'2 g instant yeast (0.4%), all in a 3–4 h poolish',flourName:'Bread flour',bakeH:0.5,name:'Ciabatta',group:'Bread',kind:'loaf',hyd:82,salt:2.4,oil:0,sugar:0,poolishPct:10,
+    sizes:['Loaf'],flourPer:[250],defSize:0,defHours:8,bakeLead:1,goodFor:8,
+    ball:'radial-gradient(ellipse 70% 45% at 50% 50%,#D9A562 0 70%,#F2E2C4 71% 100%)',
+    blurb:'Very wet, big holes. Alexandra Stafford\'s.',
+    src:'Alexandra Stafford\'s ciabatta (Alexandra\'s Kitchen): a 50 g flour, 50 g water, 2 g instant-yeast poolish, then 450 g bread flour, 360 g water, 12 g salt. That\'s 82% hydration overall.',
+    links:[['Alexandra\'s ciabatta','https://alexandracooks.com/2021/06/26/how-to-make-ciabatta-bread/']]},
+  overnight:{recipeLeaven:'¼ tsp instant yeast',flourName:'Bread flour',bakeH:0.75,name:'Overnight ciabatta',short:'Overnight ciabatta',group:'Bread',kind:'loaf',hyd:89,salt:2,oil:0,sugar:0,roomOnly:true,k:2.3,units:['loaf','loaves'],
+    sizes:['Pot'],flourPer:[400],defSize:0,defHours:16,bakeLead:1.75,goodFor:12,
+    ball:'radial-gradient(circle at 50% 45%,#E2B474 0 38%,#C68A45 52%,#3B3B3B 66%,#2A2A2A 100%)',
+    blurb:'Stir at night, bake in a hot Dutch oven. No kneading.',
+    src:'Jim Lahey\'s no-knead method (Sullivan Street Bakery, made famous by the NYT) in its wet ciabatta form from Karen\'s Kitchen Stories: 400 g bread flour, 8 g salt, ¼ tsp instant yeast and 1½ cups cool water, left 12–18 h until bubbly. That\'s about 89% hydration. Baked in a preheated 450°F pot, 30 min with the lid on and 15–30 min with it off.',
+    links:[['Karen\'s no-knead ciabatta','https://www.karenskitchenstories.com/2015/03/no-knead-ciabatta.html'],['Lahey\'s method','https://leitesculinaria.com/print/jim-laheys-no-knead-bread']]},
+  baguette:{recipeLeaven:'1½ tsp yeast in the dough plus a pinch in the poolish',flourName:'All-purpose flour',bakeH:0.5,name:'Baguette',group:'Bread',kind:'loaf',hyd:68.4,salt:2.2,oil:0,sugar:0,poolishPct:22,poolishPinch:true,units:['baguette','baguettes'],
+    sizes:['Baguette'],flourPer:[179],defSize:0,defHours:18.75,bakeLead:0.75,goodFor:8,
+    ball:'repeating-linear-gradient(115deg,transparent 0 8px,rgba(255,236,200,.8) 8px 10px),radial-gradient(ellipse 90% 28% at 50% 50%,#C98A44 0 70%,transparent 72%)',
+    blurb:'Crackly crust, open crumb. King Arthur\'s classic.',
+    src:'King Arthur Baking\'s Classic Baguettes (PJ Hamel): an overnight poolish of 120 g flour, 113 g water and a pinch of yeast, then 418 g flour, 255 g water, 1½ tsp yeast and 12 g salt for 3 baguettes. That\'s about 68% hydration.',
+    links:[['King Arthur Classic Baguettes','https://www.kingarthurbaking.com/recipes/classic-baguettes-recipe'],['Bake temps','https://thefreshloaf.com/comment/390905']]},
+  french:{recipeLeaven:'7 g yeast (about 1.5%)',flourName:'Bread flour',bakeH:0.5,name:'French bread',group:'Bread',kind:'loaf',hyd:70.8,salt:2.1,oil:0,sugar:0,units:['loaf','loaves'],
+    sizes:['Loaf'],flourPer:[240],defSize:0,defHours:4,bakeLead:1,goodFor:12,
+    ball:'repeating-linear-gradient(120deg,transparent 0 11px,rgba(255,236,200,.75) 11px 13px),radial-gradient(ellipse 80% 42% at 50% 50%,#D49650 0 70%,transparent 72%)',
+    blurb:'Soft inside, golden crust. Same-day, four ingredients.',
+    src:'Bites with Bri\'s Homemade French Bread: 480 g bread flour, 7 g yeast, 10 g kosher salt, 340 g water for 2 large loaves, baked at 425°F with a pan of water for steam.',
+    links:[['Bites with Bri','https://biteswithbri.com/homemade-french-bread-recipe/']]},
+  pan:{defCount:2,minW:10,recipeLeaven:'4 g instant yeast (1%)',flourName:'Bread flour',bakeH:0.3,name:'Pan pizza',short:'Pan pizza',group:'Pizza',kind:'tray',hyd:68.75,salt:2.5,oil:2,sugar:0,units:['pizza','pizzas'],perUnit:2,roomOnly:true,roomRange:[8,24],
+    y0:1.0,PR:2,defHours:15,bakeLead:0.4,goodFor:4,recipeFlour:400,
+    sizes:['10 in skillet'],flourPer:[200],defSize:0,extras:[],
+    tops:sc=>[['Pizza sauce',`${(1.5*sc).toFixed(2).replace(/\.?0+$/,'')} cups`],['Low-moisture mozzarella, grated',g(340*sc)],['Parmesan or pecorino, grated',g(57*sc)],['Olive oil, for the pans',`${Math.round(4*sc)} tbsp`]],
+    blurb:'Thick, crispy, fried-bottom pizza from a cast-iron skillet.',
+    src:'J. Kenji López-Alt\'s Foolproof Pan Pizza (Serious Eats): 400 g bread flour, 10 g kosher salt, 4 g instant yeast, 275 g water and 8 g olive oil, mixed without kneading, left 8–24 h at cool room temperature, then pressed into two oiled 10 in cast-iron skillets and baked at 550°F for 12–15 min.',
+    links:[['Serious Eats (via Cooklang)','https://recipes.cooklang.org/recipes/1158']]},
+  detroit:{minW:3,recipeLeaven:'5 g instant yeast (1.7%)',flourName:'Bread flour',bakeH:0.25,name:'Detroit',short:'Detroit',group:'Pizza',kind:'tray',hyd:73,salt:3,oil:0,sugar:0,units:['pan','pans'],perUnit:3,
+    y0:1.67,bulkY:2,PC:1.5,PR:1.25,defHours:4.5,bakeLead:0.4,goodFor:4,recipeFlour:300,
+    sizes:['10×14 in pan'],flourPer:[300],defSize:0,extras:[],
+    tops:sc=>[['Brick cheese, in ½ in cubes<span class="spoon">or half low-moisture mozzarella, half mild cheddar</span>',g(340*sc)],['Crushed tomatoes, for the sauce',`${(sc).toFixed(sc%1?1:0)} × 28 oz can`],['Olive oil, for the pan',g(55*sc)]],
+    blurb:'Square pan pizza with crispy, lacy cheese edges.',
+    src:'J. Kenji López-Alt\'s Detroit-style pan pizza (Serious Eats), as adapted by Food52: 300 g bread flour, 5 g instant yeast, 9 g salt and 220 g water (73%), pressed into an oiled pan, topped with brick cheese to the edges and baked at 550°F for 12–15 minutes.',
+    links:[['Food52 (from Serious Eats)','https://food52.com/recipes/73884-detroit-style-pizza']]},
+  sandwich:{recipeLeaven:'2¼ tsp instant yeast (about 1.5%)',flourName:'All-purpose flour',bakeH:0.65,name:'Sandwich loaf',short:'Sandwich loaf',group:'Soft',kind:'loaf',hyd:62.5,salt:2.3,oil:0,sugar:0,units:['loaf','loaves'],perUnit:8,
+    y0:1.46,bulkY:1.5,PC:1.75,PR:1.1,defHours:4.75,bakeLead:1.65,goodFor:72,recipeFlour:480,
+    sizes:['9×5 in loaf'],flourPer:[480],defSize:0,
+    extras:[['honey','Honey',6.7],['butter','Butter, soft',5.8],['drymilk','Nonfat dry milk',7.7]],
+    blurb:'Soft, sliceable white bread for toast and sandwiches.',
+    src:'King Arthur\'s Classic White Sandwich Bread (the Walter Sands loaf): 480 g all-purpose flour, 284–340 g water, 32 g honey, 28 g butter, 37 g dry milk, 11 g salt and 2¼ tsp instant yeast, baked in a 9×5 pan at 350°F.',
+    links:[['King Arthur','https://www.kingarthurflour.com/recipes/king-arthurs-classic-white-sandwich-bread-recipe']]},
+  buns:{minW:2.5,defCount:8,recipeLeaven:'1 tbsp (9 g) instant yeast',flourName:'All-purpose flour',bakeH:0.3,name:'Burger buns',short:'Burger buns',group:'Soft',kind:'loaf',hyd:47.1,salt:1.8,oil:0,sugar:0,units:['bun','buns'],perUnit:1,
+    y0:2.14,bulkY:1.5,PC:1.5,PR:1,defHours:3.75,bakeLead:0.55,goodFor:24,recipeFlour:420,
+    sizes:['Burger bun','Slider'],flourPer:[52.5,35],defSize:0,
+    extras:[['egg','Egg',11.9],['butter','Butter, soft',6.7],['sugar','Sugar',11.9]],
+    tops:sc=>[['Melted butter, for brushing',g(43*sc)]],
+    blurb:'Soft, golden buns. King Arthur\'s most popular.',
+    src:'King Arthur\'s Beautiful Burger Buns: 420 g all-purpose flour, 198 g water, 1 egg, 28 g butter, 50 g sugar, 1¼ tsp salt and 1 tbsp instant yeast for 8 buns (or 12 smaller ones), baked at 375°F.',
+    links:[['King Arthur','https://www.kingarthurbaking.com/blog/2011/05/16/countdown-to-summer-beautiful-burger-buns']]},
+  brioche:{morning:true,recipeLeaven:'2¼ tsp (7 g) yeast',flourName:'Bread flour',bakeH:0.65,name:'Brioche',short:'Brioche',group:'Soft',kind:'loaf',hyd:28.4,salt:2.1,oil:0,sugar:0,units:['loaf','loaves'],perUnit:8,liquid:'Milk',liqNote:'cold, from the fridge',
+    y0:1.65,bulkY:1,PC:2,PR:1.75,defHours:18,bakeLead:1.5,goodFor:48,capCold:48,recipeFlour:423,
+    sizes:['9×5 in loaf'],flourPer:[423],defSize:0,
+    extras:[['egg','Eggs, cold',35.5],['sugar','Sugar',11.8],['butter','Unsalted butter, cold',26.7]],
+    tops:sc=>[['Egg wash: 1 egg + 1 tbsp milk','1 egg']],
+    blurb:'Rich, buttery, eggy. Chilled overnight.',
+    src:'Sally\'s Baking Addiction homemade brioche (adapted from King Arthur): 423 g bread flour, 7 g yeast, 50 g sugar, 1½ tsp salt, 120 ml cold milk, 3 cold eggs and 113 g cold butter, chilled 12–16 h, then proofed and baked at 350°F for 35–40 min.',
+    links:[['Sally\'s brioche','https://sallysbakingaddiction.com/homemade-brioche/print/141877/']]},
+  cinnamon:{morning:true,minW:2.5,recipeLeaven:'2¼ tsp (one packet) instant yeast',flourName:'Bread flour (it makes them softer)',bakeH:0.4,name:'Cinnamon rolls',short:'Cinnamon rolls',group:'Soft',kind:'tray',hyd:50,salt:0.85,oil:0,sugar:0,units:['pan','pans'],perUnit:9,liquid:'Milk',liqNote:'warmed to 105–115°F (not hot)',
+    y0:1.94,bulkY:1.25,PC:1,PR:0.9,defHours:4,bakeLead:0.75,goodFor:24,capCold:18,recipeFlour:360,
+    sizes:['9 rolls (9×9 pan)'],flourPer:[360],defSize:0,
+    extras:[['sugar','Sugar',13.9],['butter','Salted butter, melted and cooled',15.8],['egg','Egg + 1 extra yolk',18.9]],
+    tops:sc=>[['Filling: soft salted butter',g(57*sc)],['Filling: dark brown sugar',g(142*sc)],['Filling: ground cinnamon',`${(1.5*sc).toFixed(sc%1?1:1).replace('.0','')} tbsp`],['Frosting: cream cheese, soft',g(112*sc)],['Frosting: powdered sugar',g(85*sc)],['Frosting: salted butter, soft',`${Math.round(3*sc)} tbsp`],['Frosting: vanilla',`${(0.5*sc).toFixed(1).replace('.0','')} tsp`]],
+    blurb:'Big, soft, gooey rolls with cream cheese frosting.',
+    src:'Ambitious Kitchen\'s Best Cinnamon Rolls (one of the site\'s most popular recipes): 360 g bread flour, 180 g milk, 50 g sugar, 57 g butter, 1 egg + 1 yolk, ¾ tsp kosher salt and 2¼ tsp yeast for 9 big rolls, with a brown sugar–cinnamon filling and cream cheese frosting, baked at 350°F for 20–25 min.',
+    links:[['Ambitious Kitchen','https://www.ambitiouskitchen.com/best-cinnamon-rolls/']]},
+  bagels:{morning:true,defCount:8,recipeLeaven:'1 tsp instant yeast',flourName:'Bread flour (all-purpose makes them less chewy)',bakeH:0.35,name:'Bagels',short:'Bagels',group:'Flat',kind:'loaf',hyd:56.2,salt:2,oil:0,sugar:0,units:['bagel','bagels'],perUnit:1,
+    y0:0.66,bulkY:1,PC:1.5,PR:0.75,defHours:16,bakeLead:0.85,goodFor:24,capCold:48,recipeFlour:454,
+    sizes:['Regular (about 113 g)'],flourPer:[57],defSize:0,
+    extras:[['malt','Barley malt syrup (or honey)',4.6]],
+    tops:()=>[['Poaching water (one pot, any batch)','2–3 L'],['…with barley malt syrup or honey','1½ tbsp'],['…baking soda','1 tbsp'],['…salt','1 tsp'],['Toppings (sesame, poppy, everything)','optional']],
+    blurb:'Chewy, boiled, then baked. Shaped the night before.',
+    src:'Leite\'s Culinaria homemade bagels: 3½ cups bread flour, 1 cup + 2 tbsp water, 1 tbsp barley malt syrup, 1½ tsp salt and 1 tsp instant yeast for 6–8 bagels; shaped, chilled overnight, boiled about a minute a side, then baked at 450°F. Grams here are converted from those cup amounts.',
+    links:[['Leite\'s Culinaria','https://leitesculinaria.com/print/homemade-bagels']]},
+  naan:{minW:2,defCount:4,recipeLeaven:'1 tsp (4 g) instant yeast',flourName:'All-purpose flour',bakeH:0.35,name:'Naan',short:'Naan',group:'Flat',kind:'loaf',hyd:53.1,salt:2,oil:0,sugar:0,units:['naan','naan'],perUnit:1,liqNote:'boiling',
+    y0:1.56,bulkY:1.25,PC:1.25,PR:1,defHours:3.25,bakeLead:0.4,goodFor:4,recipeFlour:256,
+    sizes:['Regular'],flourPer:[64],defSize:0,
+    extras:[['yogurt','Greek yogurt, cold',46.9]],
+    tops:sc=>[['Melted butter, for brushing',`${Math.max(1,Math.round(2*sc))} tbsp`]],
+    blurb:'Soft, blistered flatbread from a hot skillet.',
+    src:'Alexandra\'s Kitchen simple yeasted naan: 256 g all-purpose flour, 5 g kosher salt, 4 g instant yeast, 136 g boiling water and 120 g Greek yogurt, cooked in a very hot cast-iron skillet.',
+    links:[['Alexandra\'s Kitchen','https://getrecipecart.com/recipe/simple-yeasted-homemade-naan/605f8651272ba43e9803d6e5']]},
+  pita:{minW:1.5,defCount:8,recipeLeaven:'2 tsp instant yeast',flourName:'All-purpose flour',bakeH:0.35,name:'Pita',short:'Pita',group:'Flat',kind:'loaf',hyd:63,salt:2.5,oil:0,sugar:0,units:['pita','pitas'],perUnit:1,
+    y0:1.7,bulkY:1,PC:1.25,PR:0.6,defHours:2.5,bakeLead:0.5,goodFor:24,recipeFlour:360,
+    sizes:['About 7 in'],flourPer:[45],defSize:0,
+    extras:[['sugar','Sugar',2.2],['oil','Vegetable oil',6.9]],
+    blurb:'Puffs into a pocket in a very hot oven.',
+    src:'King Arthur\'s Golden Pita Bread: 360 g all-purpose flour, 227 g water, 25 g oil, 2 tsp sugar, 9 g salt and 2 tsp instant yeast for 8 pitas, baked on a sheet on the lowest rack of a 500°F oven.',
+    links:[['King Arthur','https://www.kingarthurbaking.com/recipes/golden-pita-bread-recipe']]}
+};
+const GROUPS=[['Pizza','Pizza'],['Crusty','Crusty'],['Soft','Soft & sweet'],['Flat','Flat & bagels']];
+['focaccia','sourdough','ciabatta','overnight','baguette','french'].forEach(k=>STYLES[k].group='Crusty');
+
+/* ---------- State ---------- */
+const store = {
+  get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+};
+const settings = Object.assign({unit:'F',roomC:21,yeastType:'IDY',fridgeC:4,loss:2}, store.get('rise.settings',{}));
+function nextSat19(){const d=new Date();d.setHours(19,0,0,0);let add=(6-d.getDay()+7)%7;if(add===0&&d<new Date())add=7;d.setDate(d.getDate()+add);return d}
+const S = {ing:{},ripe:false,style:'neapolitan',count:4,sizeIdx:1,leaven:'yeast',mode:'readyBy',eat:nextSat19(),start:null,hours:24,oven:'home',mix:'hand',hyd:null,salt:null,done:{}};
+S.start = recommendedStart();
+
+/* ---------- Helpers ---------- */
+const cToF = c => c*9/5+32;
+const fmtT = c => settings.unit==='F' ? Math.round(cToF(c))+'°F' : Math.round(c)+'°C';
+const fmtT2 = c => settings.unit==='F' ? `${Math.round(cToF(c))}°F (${Math.round(c)}°C)` : `${Math.round(c)}°C (${Math.round(cToF(c))}°F)`;
+const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+function fmtWhen(d){
+  const now=new Date(), t=d.toLocaleTimeString('en-CA',{hour:'numeric',minute:'2-digit'});
+  const day0=new Date(now);day0.setHours(0,0,0,0);
+  const diff=Math.floor((new Date(d).setHours(0,0,0,0)-day0)/864e5);
+  const day = diff===0?'Today':diff===1?'Tomorrow':diff>1&&diff<7?DAYS[d.getDay()]:d.toLocaleDateString('en-CA',{weekday:'short',month:'short',day:'numeric'});
+  return `${diff===0||diff===1?day.toLowerCase():day} ${t}`;
+}
+const fmtH = h => { if(h<1) return Math.round(h*60)+' min'; const r=Math.round(h*2)/2; return (r%1? r.toFixed(1):r)+' h'; };
+const toLocalInput = d => { const p=n=>String(n).padStart(2,'0'); return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`; };
+const NUMW = ['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve'];
+const numWord = n => NUMW[n] ? NUMW[n][0].toUpperCase()+NUMW[n].slice(1) : String(n);
+const g = (x,dp=0) => (dp? x.toFixed(dp) : Math.round(x).toLocaleString('en-CA'))+' g';
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+function roundTo15(d){const x=new Date(d);x.setSeconds(0,0);x.setMinutes(Math.round(x.getMinutes()/15)*15);return x}
+
+function needFeed(){ return S.leaven==='starter' && !S.ripe; }
+function recommendedStart(){
+  const st=STYLES[S.style];
+  let h = st.defHours;
+  if(S.leaven==='starter') h = st.group==='Pizza' ? Math.max(h+4,16) : Math.max(h,12);
+  let d = roundTo15(new Date(S.eat - h*HR));
+  // keep the feed (if any) and the mix out of 11 p.m.–7 a.m.: pick the closest awake slot
+  const f = needFeed()?6:0, ok=t=>{const x=new Date(t), hh=x.getHours()+x.getMinutes()/60; return hh>=7 && hh<23;};
+  if(!(ok(+d) && ok(+d-f*HR))){
+    let best=null;
+    for(let k=1;k<=48 && !best;k++) for(const sgn of [1,-1]){
+      const c=+d+sgn*k*30*60e3, span=(S.eat-c)/HR;
+      if(span<h*0.65 || span>h*1.8) continue;
+      if(ok(c) && ok(c-f*HR)){ best=new Date(c); break; }
+    }
+    if(best) d=best;
+  }
+  const now = roundTo15(new Date(Date.now()+15*60e3 + (needFeed()?6*HR:0)));
+  return d < now ? now : d;
+}
+function window_(){ // returns {start, eat}
+  const now=roundTo15(new Date());
+  if(S.mode==='hours'){ return {start:new Date(+now + (needFeed()?6*HR:0)), eat:new Date(+now + S.hours*HR), feedAt:now}; }
+  let start=S.start, late=false;
+  if(needFeed() && +start-6*HR < Date.now()-15*60e3){ start=new Date(+now+6*HR); late=true; }
+  return {start, eat:S.eat, late};
+}
+
+/* ---------- Fermentation model ----------
+   Yeast: instant yeast % × hours ≈ 1.2 at ~24°C dough (calibrated to the common
+   0.2% ≈ 5–6 h, 0.4% ≈ 3 h, 0.8% ≈ 1.5–2 h table); activity roughly doubles per ~9°C.
+   Fridge time counts at a small fraction of room time. Starter scales the same way,
+   anchored on Tartine's ~18% of total flour for a ~5 h bulk. */
+// Activity relative to 24°C: roughly doubles per ~9°C in the warm range; falls off steeply
+// toward fridge temperatures (calibrated so ~4°C ≈ 3% of room-temperature activity).
+const tf = T => T>=15 ? Math.pow(2,(T-24)/9) : 0.5*Math.pow(2,(T-15)/2.71);
+const roomFactor = () => tf(settings.roomC);
+
+function plan(){
+  const st=STYLES[S.style], {start,eat,late}=window_();
+  const bakeAt = new Date(+eat - st.bakeLead*HR);
+  const W = (bakeAt - start)/HR;
+  const starter = S.leaven==='starter';
+  const warns=[];
+  { const hh=start.getHours(); if(needFeed() && (hh<7||hh>=23)) warns.push(`With a fresh feed, mixing lands at ${fmtWhen(start)}. If your starter is already ripe, tick “already ripe” in Adjust to mix sooner, or switch to instant yeast.`); }
+  if(late) warns.push(`Your starter needs about 6 h after feeding, so mixing moves to ${fmtWhen(start)}. Tick “already ripe” if it's ready now.`);
+  const mix = st.kind==='loaf' && S.style==='sourdough' ? 1 : 0.5;
+  const poolish = (starter || !st.poolishPct) ? 0 : st.poolishPinch ? (()=>{const x=clamp(W-0.5-2-1.5,0,14);return x>=3?x:0})() : (W>=7?3:0);
+  let bulk = starter ? (S.style==='sourdough'?4.5:4) : (st.bulkY || (st.kind==='pizza'?1.5:2));
+  const PC={overnight:0.5,focaccia:2,ciabatta:1.25,baguette:1.75,french:1.5,sourdough:0}, PR={overnight:0.5,focaccia:1.5,ciabatta:1,baguette:1.5,french:1.25,sourdough:2};
+  const proofCold = st.PC ?? (st.kind==='pizza'?3 : PC[S.style]);
+  const proofRoom = st.PR ?? (st.kind==='pizza'?1.5 : PR[S.style]);
+  const capCold = st.capCold || (S.style==='sourdough'?48:72);
+  const minW = starter?6:(st.minW||2.5);
+  let cold=0, proof, route;
+  const avail = W - poolish - mix;
+  if(W < minW) warns.push(`That's tight for ${starter?'a starter':'this dough'}. Give it at least ${minW} h, or switch to ${starter?'instant yeast':'a later ready time'}.`);
+  if(!st.roomOnly && avail >= bulk + proofCold + 8){
+    route='cold'; proof=proofCold; cold = avail - bulk - proof;
+    if(cold>capCold){
+      const extra=cold-capCold; cold=capCold;
+      warns.push(`That's more time than this dough wants. Start about ${fmtH(extra)} later (${fmtWhen(roundTo15(new Date(+start+extra*HR)))}) or it'll sit around.`);
+    }
+  } else {
+    route='room'; proof=proofRoom; bulk=Math.max(0.5, avail - proof);
+    if(avail - proof < 0.5){ proof=Math.max(0.5,avail-0.5); }
+  }
+  const ddt = (route==='cold'||st.roomOnly)?22:25;
+  const fr=roomFactor(), fb=tf((ddt+settings.roomC)/2);
+  const fc=tf(settings.fridgeC)*(starter?0.67:1);
+  const equiv = (st.poolishPinch?0:poolish)*fr + (mix+bulk)*fb + proof*fr*(route==='cold'?0.6:1) + cold*fc;
+  if(st.poolishPct && !starter && !poolish) warns.push(`No time for the poolish, so this is a straight dough. It works, but expect less flavour and a tighter crumb than the recipe. Give it ${st.poolishPinch?'about 9':'7'}+ h to get the poolish back.`);
+  const K=(st.k||1.2);
+  if(st.roomOnly){ const [lo,hi]=st.roomRange||[12,18]; if(bulk>(st.roomRange?hi:24)) warns.push(`That's a ${fmtH(bulk)} rise, longer than this dough wants (${lo}–${hi} h is the sweet spot). Start later.`); else if(bulk<8) warns.push(`This dough is meant for a long, slow rise (${lo}–${hi} h). A ${fmtH(bulk)} rise works, but with less flavour.`); }
+  let yeastPct = clamp(K/equiv, route==='cold'?0.1:0.04, 3);
+  if(route==='room' && (S.style==='brioche'||S.style==='bagels')) warns.push(S.style==='brioche'?'Brioche is much easier to shape after a night in the fridge. With this little time the dough will be soft and sticky, so chill it for 30–60 min before shaping if you can.':'Bagels get their flavour and shiny crust from a night in the fridge. This same-day version works, but give it 12+ hours for the real thing.');
+  let starterPct = clamp(18*5*(K/1.2)/equiv, 3, 30);
+  if(starter && starterPct>=29.9 && W<10) warns.push('Even a lot of starter will be slow over this little time. Expect a denser result.');
+
+  return {st,start,eat,bakeAt,W,route,cold,bulk,proof,poolish,mix,yeastPct,starterPct,warns,equiv,ddt};
+}
+
+/* ---------- Quantities ---------- */
+function quantities(p){
+  const st=p.st, hyd=(S.hyd??st.hyd), salt=(S.salt??st.salt);
+  let flour;
+  if(st.kind==='pizza'){
+    const d=st.sizes[S.sizeIdx], unit=st.density*Math.PI*(d/2)**2;
+    flour = S.count*unit/(1+(hyd+salt+st.oil+st.sugar)/100);
+  } else flour = S.count*st.flourPer[S.sizeIdx];
+  flour *= 1+settings.loss/100;
+  const water=flour*hyd/100, q={flour,water,hyd,salt,saltG:flour*salt/100,oil:flour*st.oil/100,sugar:flour*st.sugar/100,x:{}};
+  let xsum=0; (st.extras||[]).forEach(([k,l,pc])=>{q.x[k]=flour*pc/100; xsum+=q.x[k];});
+  q.sc = st.recipeFlour ? (flour/(1+settings.loss/100))/st.recipeFlour : 1;
+  if(st.brine){ q.brineWater=flour*0.10; q.brineSalt=flour*0.00625; }
+  if(S.leaven==='starter'){
+    q.starter=flour*p.starterPct/100; q.addFlour=flour-q.starter/2; q.addWater=water-q.starter/2;
+  } else {
+    q.yeast=flour*p.yeastPct/100; q.addFlour=flour; q.addWater=water;
+    if(st.poolishPct && p.poolish){ q.poolishFlour=flour*st.poolishPct/100; q.poolishYeast=st.poolishPinch? q.poolishFlour*0.0007 : 0; }
+  }
+  if(st.ww){ q.wwFlour=q.addFlour*st.ww/100; }
+  const dough = flour+water+q.saltG+q.oil+q.sugar+xsum;
+  q.dough=dough; q.unit=dough/(1+settings.loss/100)/S.count;
+  // water temperature (desired dough temperature method)
+  const ddt = p.ddt, fr = S.mix==='hand'?4:12, r=settings.roomC; q.ddt=ddt;
+  q.waterC = S.leaven==='starter' ? 4*ddt - r - r - r - fr : 3*ddt - r - r - fr;
+  q.waterC = clamp(q.waterC, 2, st.liqCap||40);
+  return q;
+}
+
+/* ---------- Schedule text ---------- */
+function buildSteps(p,q){
+  const st=p.st, starter=S.leaven==='starter', hand=S.mix==='hand';
+  const steps=[]; let t=+p.start;
+  const add=(title,detail,dur,cls)=>{steps.push({at:new Date(t),title,detail,dur,cls}); t+=dur*HR;};
+  const waterTxt = `${fmtT2(q.waterC)} water`;
+  if(starter && !S.ripe){
+    steps.push({at:new Date(+p.start-6*HR),title:'Feed your starter',detail:(()=>{const seed=Math.max(10,Math.ceil(q.starter*1.15/5/5)*5); return `In a clean jar, mix ${g(seed)} of your starter with ${g(seed*2)} flour and ${g(seed*2)} water (a 1:2:2 feed). That makes ${g(seed*5)}, a bit more than the ${g(q.starter)} ripe starter you need. It's ready when it has about doubled, looks domed and bubbly, and a spoonful floats in water.`})(),dur:6});
+  }
+  if(p.poolish){
+    add('Make the poolish', st.poolishPinch
+      ? `Stir ${g(q.poolishFlour)} flour, ${g(q.poolishFlour)} of the water and a tiny pinch of yeast (about ${g(q.poolishYeast*yeastMult(),2)}) into a soft dough. Cover and leave it at room temperature until bubbly.`
+      : `Stir ${g(q.poolishFlour)} flour, ${g(q.poolishFlour)} of the water and all ${g(q.yeast*yeastMult(),1)} yeast into a loose batter. Cover and leave it at room temperature.`,p.poolish);
+  }
+  const knead = hand ? 'knead by hand until smooth and stretchy' : 'mix on low, then medium, until it pulls off the bowl';
+  const leavenTxt = starter ? `${g(q.starter)} starter` : p.poolish ? 'the poolish' : `${g(q.yeast,1)} ${yeastName()}`;
+  if(st.kind==='pizza'){
+    add('Mix',`Combine ${g(q.addWater)} ${waterTxt}, ${leavenTxt} and ${g(q.addFlour)} flour${st.sugar?`, ${g(q.sugar)} sugar`:''}. Rest 15 min, add ${g(q.saltG)} salt${st.oil?` and ${g(q.oil)} olive oil`:''}, then ${knead}.`,p.mix);
+    add('Bulk rise',`Cover and leave at room temperature.`,p.bulk);
+    if(p.route==='cold'){
+      add('Ball and chill',`Divide into ${S.count} balls of about ${g(q.unit)}. Into lightly oiled, covered containers and into the fridge.`,p.cold,'cold');
+      add('Out of the fridge',`Let the balls warm up, covered, until soft and puffy.`,p.proof-1);
+    } else {
+      add('Ball',`Divide into ${S.count} balls of about ${g(q.unit)}. Cover and let them proof.`,p.proof-1);
+    }
+    add('Heat the oven', S.oven==='home' ? 'Steel or stone in, oven at its max (500–550°F) for 45–60 min.' : 'Fire up the pizza oven and let the floor get fully hot.',1);
+    add('Bake', S.oven==='home'
+      ? (S.style==='neapolitan' ? 'Stretch, top, bake on the steel. About 4 min, finishing under the broiler for leopard spots.' : 'Stretch, top, bake at 550°F on the stone or steel, about 6–7 min.')
+      : (S.style==='neapolitan' ? 'Stretch, top, bake 60–90 s at around 900°F, turning as it goes.' : 'Stretch, top, bake around 650°F, about 2 min, turning as it goes.'), st.bakeLead);
+  }
+  if(S.style==='focaccia'){
+    add('Mix',`Stir ${g(q.addWater)} ${waterTxt}, ${leavenTxt} and ${g(q.sugar)} honey, then add ${g(q.addFlour)} flour, ${g(q.saltG)} salt and ${g(q.oil)} olive oil. Stir until no dry flour is left. No kneading needed.`,p.mix);
+    if(p.route==='cold'){ add('Short rise','Cover and leave at room temperature.',p.bulk); add('Into the fridge','Covered, slow overnight-style rise.',p.cold,'cold'); }
+    else add('Rise','Cover and leave at room temperature until doubled and bubbly.',p.bulk);
+    add('Pan it',`Pour lots of olive oil into the pan, tip the dough in and gently stretch it to the corners. Cover and let it puff.`,p.proof-0.75);
+    add('Heat oven, dimple, brine',`Oven to 450°F. Dimple with oiled fingers, then pour over a brine of ${g(q.brineWater)} water and ${g(q.brineSalt,1)} salt.`,0.75);
+    add('Bake','425–450°F for 20–30 min until deep golden. Flaky salt on top.',st.bakeLead);
+  }
+  if(S.style==='sourdough'){
+    add('Mix',`Mix ${g(q.addFlour)} flour (${g(q.wwFlour)} of it whole wheat) with most of the ${g(q.addWater)} ${waterTxt}. Rest 30 min, then add ${leavenTxt}, ${g(q.saltG)} salt and the last of the water and squeeze it all through.`,p.mix);
+    add('Bulk with folds','Stretch and fold every 30 min for the first 2 h, then leave it. It\'s ready when it\'s about 30–50% bigger, domed and jiggly.',p.bulk);
+    if(p.route==='cold'){
+      add('Shape and retard',`Shape into ${S.count===1?'a tight boule':S.count+' tight boules'}, into a floured banneton, covered, into the fridge.`,p.cold,'cold');
+    } else add('Shape and proof',`Shape into ${S.count===1?'a tight boule':S.count+' tight boules'}, into a floured banneton and let it proof.`,p.proof-1);
+    add('Heat the Dutch oven','Dutch oven (lid on) into the oven at 500°F for about 45 min.',p.route==='cold'?0.75:1);
+    add('Bake','Bake straight from the fridge. Score, lid on, drop to 450°F for 20 min, then lid off 20–25 min until deep brown. ',st.bakeLead);
+  }
+  if(S.style==='ciabatta'){
+    add('Mix',`Combine ${p.poolish?'the poolish, ':''}${g(q.addWater - (q.poolishFlour||0))} ${waterTxt}${starter?`, ${g(q.starter)} starter`:''}${!starter&&!p.poolish?`, ${g(q.yeast,1)} ${yeastName()}`:''}, ${g(q.addFlour-(q.poolishFlour||0))} flour and ${g(q.saltG)} salt. It will be very wet. ${hand?'Use wet hands and slap and fold':'Mix in the stand mixer until it pulls from the sides'}.`,p.mix);
+    add('Bulk with folds','Coil-fold every 30 min for the first 2 h in an oiled container.',p.bulk);
+    if(p.route==='cold') add('Into the fridge','Covered, in the same container.',p.cold,'cold');
+    add('Divide and proof',`Tip out onto a well-floured counter, cut into ${S.count} ${S.count===1?'piece':'pieces'} without degassing, onto floured parchment. Oven to 460°F with a stone if you have one.`,p.proof);
+    add('Bake','460°F with steam until deep golden and hollow-sounding, about 25 min.',st.bakeLead);
+  }
+  if(S.style==='overnight'){
+    const lv = starter?`${g(q.starter)} ripe starter`:`${g(q.yeast*yeastMult(),2)} ${yeastName()} (${spoons(q.yeast*yeastMult())||'a pinch'})`;
+    add('Mix',`Stir ${g(q.addFlour)} flour, ${g(q.saltG,1)} salt and ${lv} together in a big bowl, then add ${g(q.addWater)} ${waterTxt} and stir just until no dry flour is left, about 30 seconds. It'll be very wet and shaggy. No kneading.`,p.mix);
+    add('Overnight rise','Cover and leave it on the counter. It\'s ready when it has more than doubled and the surface is dotted with bubbles.',p.bulk);
+    add('Heat the Dutch oven',`Dutch oven, lid on, into the oven at 450°F for 30 min. Meanwhile tip the dough onto well-floured parchment and fold it over on itself once or twice${S.count>1?' (one pot per loaf, or bake them one after another)':''}.`,p.proof);
+    add('Bake','Lift the dough on its parchment into the hot pot. Lid on for 30 min, then lid off for 15–30 min until deep chestnut brown.',st.bakeLead);
+  }
+  if(S.style==='baguette'||S.style==='french'){
+    const bag=S.style==='baguette', pf=q.poolishFlour||0;
+    const lv = starter?`${g(q.starter)} starter`:`${g(q.yeast*yeastMult(),1)} ${yeastName()}`;
+    add('Mix',`Combine ${pf?'the poolish, ':''}${g(q.addWater-pf)} ${waterTxt}, ${lv}, ${g(q.addFlour-pf)} flour and ${g(q.saltG,1)} salt, then ${knead}.`,p.mix);
+    add(bag?'Bulk with folds':'First rise', bag?'Cover. Gently deflate and fold it into the centre after 1 h, and again after 2 h.':'Cover and leave until doubled.',p.bulk);
+    if(p.route==='cold') add('Into the fridge','Covered, for slow flavour.',p.cold,'cold');
+    add(bag?'Shape and proof':'Shape and proof', bag
+      ? `Divide into ${S.count} pieces of about ${g(q.unit)}, pre-shape into logs, rest 15 min, then roll out into baguettes. Proof seam-up in a floured couche or tea towel.`
+      : `Divide into ${S.count}, press each into a rough 12 × 6 in rectangle, roll up tightly from a long side and pinch the seam. Seam-down on a parchment-lined sheet to proof.`, p.proof-0.75);
+    add('Heat the oven', bag?'Stone or steel in at 500°F with an empty metal pan on the bottom rack for steam, about 45 min.':'Oven to 425°F with an empty metal or cast-iron pan on the bottom rack (not glass).',0.75);
+    add('Bake', bag
+      ? 'Score, add steam and bake about 10–12 min at 480–500°F. Pull the steam pan and finish 10–12 min at 450–475°F until deep golden.'
+      : 'Score 3–4 diagonal slashes, pour 1 cup hot water into the pan, and bake 26–29 min until deep golden and hollow-sounding (about 200°F inside).', st.bakeLead);
+  }
+  if(['pan','detroit','sandwich','buns','brioche','cinnamon','bagels','naan','pita'].includes(S.style)){
+  // ---- added doughs ----
+  const X=q.x, eggs=gr=>{const n=Math.round(gr/50*2)/2; return n>=1?` (about ${n} large egg${n>1?'s':''})`:'';};
+  const liqName=(st.liquid||'Water').toLowerCase();
+  const liqTxt = st.liqNote ? `${liqName}, ${st.liqNote}` : `${fmtT2(q.waterC)} ${liqName}`;
+  const lv2 = starter ? `${g(q.starter)} ripe starter` : `${g(q.yeast*yeastMult(),1)} ${yeastName()}`;
+  const shapeCold = (title, detail) => { if(p.route==='cold') add(title, detail+' Cover and refrigerate.', p.cold, 'cold'); };
+  if(S.style==='pan'){
+    const n=S.count;
+    add('Mix',`Stir ${g(q.addFlour)} bread flour, ${g(q.saltG,1)} salt, ${lv2}, ${g(q.addWater)} ${liqTxt} and ${g(q.x.oil||q.oil)} olive oil until there's no dry flour. No kneading. Use a big bowl: it will grow a lot.`,p.mix);
+    add('Long rise','Cover tightly and leave at cool room temperature (no warmer than 75°F). It should rise dramatically and fill the bowl.',p.bulk);
+    add('Ball and pan',`Divide into ${n} balls. Pour 2 tbsp olive oil into each 10 in cast-iron skillet, add a ball, turn to coat and press it out with a flat palm. Cover tightly. After the first hour, heat the oven to 550°F with a rack in the middle. At the end, press the dough into the corners and pop any big bubbles.`,p.proof);
+    add('Top and bake','Sauce, then mozzarella all the way to the edges, plus any toppings. Bake 12–15 min until golden and bubbly. Lift an edge with a thin spatula: if the bottom isn\'t crisp, set the pan over a medium burner for 1–3 min. Finish with the grated Parmesan.',st.bakeLead);
+  }
+  if(S.style==='detroit'){
+    add('Mix',`Stir ${g(q.addFlour)} bread flour, ${lv2} and ${g(q.saltG,1)} salt, then add ${g(q.addWater)} ${liqTxt} and mix until there's no dry flour. It's a wet, shaggy dough, no kneading needed.`,p.mix);
+    add('Rise','Cover and leave until roughly doubled.',p.bulk);
+    shapeCold('Into the fridge','Optional slow rise for more flavour.');
+    add('Pan it',`Pour ${g(55*q.sc)} olive oil into the pan, add the dough, turn to coat and press it towards the corners. Rest 30 min, then stretch it to fill the pan.`,p.proof-0.6);
+    add('Heat oven and top',`Oven to 550°F (or as hot as it goes), rack low. Scatter the cheese cubes all the way to the edges so they touch the pan; that's what makes the crispy, lacy crust. Spoon the sauce on in stripes.`,0.6);
+    add('Bake','12–15 min, until the edges are dark and bubbly and the cheese is starting to brown. Run a spatula around the edges and lift it out.',st.bakeLead);
+  }
+  if(S.style==='sandwich'){
+    add('Mix and knead',`Combine ${g(q.addFlour)} flour, ${g(q.addWater)} ${liqTxt}, ${g(X.honey)} honey, ${g(X.butter)} soft butter, ${g(X.drymilk)} dry milk, ${g(q.saltG,1)} salt and ${lv2}, then ${knead}. It should be soft and smooth.`,p.mix);
+    add('First rise','Cover and leave until puffy and roughly doubled.',p.bulk);
+    shapeCold('Into the fridge','Optional: slows it down so you can bake later.');
+    add('Shape and proof',`Shape into a log (about 9 in long${S.count>1?' each':''}) and lay it seam-down in a greased 9×5 in loaf pan. Let it rise until it crowns about 1 in above the rim. Oven to 350°F near the end.`,p.proof);
+    add('Bake','350°F for 20 min, then tent loosely with foil and bake 15–20 min more, until golden and about 195–200°F in the middle. Turn out of the pan.',st.bakeLead);
+  }
+  if(S.style==='buns'){
+    const n=S.count;
+    add('Mix and knead',`Combine ${g(q.addFlour)} flour, ${g(q.addWater)} ${liqTxt}, ${g(X.egg)} beaten egg${eggs(X.egg)}, ${g(X.butter)} soft butter, ${g(X.sugar)} sugar, ${g(q.saltG,1)} salt and ${lv2}, then ${knead} into a soft, smooth dough.`,p.mix);
+    add('First rise','Cover and leave until nearly doubled.',p.bulk);
+    shapeCold('Into the fridge','Optional slow rise.');
+    add('Shape and proof',`Divide into ${n} pieces of about ${g(q.unit)}. Roll each into a smooth ball and flatten to about ${S.sizeIdx?'2½':'3'} in across on a parchment-lined sheet. Cover and let them rise until puffy. Oven to 375°F near the end.`,p.proof);
+    add('Bake',`Brush with about half the melted butter (or egg wash and sesame seeds) and bake at 375°F for ${S.sizeIdx?'12–15':'15–18'} min, until golden. Brush with the rest of the butter as they come out.`,st.bakeLead);
+  }
+  if(S.style==='brioche'){
+    add('Mix (stand mixer)',`Use everything cold. Mix ${g(q.addFlour)} bread flour, ${lv2}, ${g(X.sugar)} sugar, ${g(q.saltG,1)} salt, ${g(q.addWater)} cold milk and ${g(X.egg)} cold eggs${eggs(X.egg)} with the dough hook until smooth. Then add ${g(X.butter)} cold butter a piece at a time, letting each disappear before the next, and mix until glossy and stretchy.`,p.mix);
+    add('Short rise','Cover and leave at room temperature.',p.bulk);
+    shapeCold('Chill overnight','The cold firms up the butter so the dough is easy to shape, and builds flavour.');
+    add('Shape and proof',`Divide into ${6*S.count} even balls and set them in ${S.count>1?'two staggered rows in each':'two staggered rows in a'} greased 9×5 in loaf pan. Cover and let rise until puffy and up to the rim. Oven to 350°F near the end.`,p.proof);
+    add('Bake','Brush with egg wash and bake at 350°F for 35–40 min, until deep golden and about 195°F in the middle. Tent with foil if it browns too fast.',st.bakeLead);
+  }
+  if(S.style==='cinnamon'){
+    const pans=S.count;
+    add('Mix and knead',`Warm ${g(q.addWater)} milk to 105–115°F (warm, not hot). Mix in ${lv2} and ${g(X.sugar)} sugar, then ${g(X.butter)} melted butter, ${g(X.egg)} egg + yolk and ${g(q.saltG,1)} salt. Add ${g(q.addFlour)} bread flour and ${knead}. It should be soft and only slightly tacky.`,p.mix);
+    add('First rise','Cover in an oiled bowl until doubled.',p.bulk);
+    const shapeTxt = `Roll out to a rectangle about 12 × 15 in${pans>1?' per pan':''}. Spread with the soft butter, sprinkle the brown sugar and cinnamon all over, roll up from the long side and cut into ${9*pans} rolls. Set them in a parchment-lined 9×9 in pan${pans>1?' (one per 9 rolls)':''}.`;
+    if(p.route==='cold'){ add('Roll, fill and chill', shapeTxt+' Cover and refrigerate (up to 18 h).', p.cold, 'cold'); add('Out of the fridge','Let them warm up and rise until puffy and touching. Oven to 350°F near the end.',p.proof); }
+    else add('Roll, fill and proof', shapeTxt+' Cover and let rise until doubled and touching. Oven to 350°F near the end.', p.proof);
+    add('Bake and frost','350°F for 20–25 min, until golden at the edges. While they bake, beat the cream cheese, powdered sugar, butter and vanilla until smooth. Frost while warm.',st.bakeLead);
+  }
+  if(S.style==='bagels'){
+    const n=S.count;
+    add('Mix and knead',`Stir ${g(X.malt)} barley malt syrup, ${lv2} and ${g(q.saltG,1)} salt into ${g(q.addWater)} ${liqTxt}. Add ${g(q.addFlour)} bread flour and ${hand?'knead by hand until stiff, smooth and satiny (it\'s a firm dough)':'mix on low until stiff and smooth'}.`,p.mix);
+    add('Rise','Cover and leave at room temperature.',p.bulk);
+    const shp=`Divide into ${n} pieces of about ${g(q.unit)}. Roll each into a ball, poke a hole through the middle with your thumb and stretch it to about 2 in across. Set on an oiled, parchment-lined sheet and mist with oil.`;
+    if(p.route==='cold'){ add('Shape and chill', shp+' Cover and refrigerate overnight (up to 2 days).', p.cold, 'cold'); add('Out of the fridge and float test','Take them out, then check one: drop it in a bowl of cold water. If it floats, they\'re ready; if it sinks, wait 15–20 min and test again. Meanwhile heat the oven to 500°F.',p.proof-0.25); }
+    else add('Shape and rest', shp+' Cover and let them rest until one floats in cold water. Oven to 500°F.', p.proof-0.25);
+    add('Boil','Bring a pot of water at least 4 in deep to a simmer with the malt syrup (or honey), baking soda and salt. Boil a few at a time: about 1 min on the first side, then 30–60 s on the second. Back onto the sheet; add toppings while wet.',0.25);
+    add('Bake','Into the oven and turn it down to 450°F. Bake 8 min, rotate the pan, then 8–12 min more until golden brown. Cool at least 30 min.',st.bakeLead);
+  }
+  if(S.style==='naan'){
+    const n=S.count;
+    add('Mix',`Whisk ${g(q.addFlour)} flour, ${g(q.saltG,1)} salt and ${lv2}. Stir ${g(q.addWater)} boiling water into ${g(X.yogurt)} cold Greek yogurt (the mix ends up just warm), pour it in and stir, then knead about a minute into a sticky ball.`,p.mix);
+    add('Rise','Cover and leave until roughly doubled.',p.bulk);
+    shapeCold('Into the fridge','Optional: keeps until tomorrow.');
+    add('Divide and rest',`Divide into ${n} balls and let them rest, covered, on a floured counter.`,p.proof);
+    add('Cook',`Heat a cast-iron skillet over high heat until very hot. Stretch or roll each ball into an oval about ¼ in thick and cook a minute or two per side, until puffed and charred in spots. Brush with melted butter and keep warm in a towel.`,st.bakeLead);
+  }
+  if(S.style==='pita'){
+    const n=S.count;
+    add('Mix and knead',`Combine ${g(q.addFlour)} flour, ${g(q.addWater)} ${liqTxt}, ${g(X.oil)} oil, ${g(X.sugar)} sugar, ${g(q.saltG,1)} salt and ${lv2}, then ${knead}.`,p.mix);
+    add('Rest','Cover in a lightly greased bowl. It gets puffy but may not double.',p.bulk);
+    shapeCold('Into the fridge','Optional slow rest.');
+    add('Shape',`Heat the oven to 500°F. Divide into ${n} pieces and roll each into a 6–7 in circle. Lay them on a lightly greased baking sheet and leave uncovered for 15 min.`,p.proof);
+    add('Bake','A few at a time: lowest rack for about 5 min until puffed, then move up to the middle-top rack for about 2 min to brown. Wrap in a clean towel so they stay soft.',st.bakeLead);
+  }
+  }
+  const mx=steps.find(x=>/^Mix/.test(x.title)); if(mx) mx.detail+=` Check the dough with a thermometer: aim for about ${fmtT2(q.ddt)}. Warmer than that, it'll rise faster than planned; cooler, slower.`;
+  const bk=steps.find(x=>x.title==='Bake');
+  if(bk && st.bakeH<st.bakeLead){ bk.dur=st.bakeH; steps.push({at:new Date(+bk.at+st.bakeH*HR),title:'Cool',detail:st.kind==='tray'?'A few minutes in the pan, then onto a rack.':'On a rack, so the crumb sets before you cut it.',dur:st.bakeLead-st.bakeH}); }
+  steps.push({at:new Date(p.eat),title:st.kind==='pizza'?'Eat':'Ready',detail:'',dur:0,end:true});
+  steps.forEach(x=>{ if(!x.end) x.at=new Date(Math.round(x.at/3e5)*3e5); });
+  return steps.sort((a,b)=>a.at-b.at);
+}
+const gstamp = d => new Date(d).toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
+function gcal(text, at, durH, details){
+  return 'https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(text)+'&dates='+gstamp(at)+'/'+gstamp(+at+durH*HR)+'&details='+encodeURIComponent(details||'');
+}
+const yeastName = () => ({IDY:'instant yeast',ADY:'active dry yeast',fresh:'fresh yeast'})[settings.yeastType];
+const FR={1:'⅛',2:'¼',3:'⅜',4:'½',5:'⅝',6:'¾',7:'⅞'};
+function spoons(grams){ // instant ≈3.1 g/tsp; active dry ≈2.8 g/tsp
+  const per = settings.yeastType==='ADY'?2.83:3.1; if(settings.yeastType==='fresh') return '';
+  const eighths=Math.round(grams/per*8); if(eighths<1) return 'a small pinch';
+  const w=Math.floor(eighths/8), f=eighths%8; return '≈ '+(w?w+(f?' ':''):'')+(f?FR[f]:'')+' tsp';
+}
+const yeastMult = () => ({IDY:1,ADY:1.2,fresh:3})[settings.yeastType];
+
+/* ---------- Equipment ---------- */
+const EQUIP = {
+  _base:[['Digital kitchen scale','needed'],['Big mixing bowl','needed']],
+  neapolitan:[['Baking steel or pizza stone','needed for a home oven'],['Pizza peel (or an upside-down baking sheet)','needed'],['Lidded containers for the dough balls','needed']],
+  ny:[['Baking steel or pizza stone','needed for a home oven'],['Pizza peel (or an upside-down baking sheet)','needed'],['Lidded containers for the dough balls','needed']],
+  focaccia:[['9×13 in pan or half sheet pan','needed'],['Good olive oil','needed']],
+  sourdough:[['Dutch oven with a lid','needed'],['Banneton, or a bowl lined with a floured tea towel','needed'],['Razor blade or very sharp knife, for scoring','needed'],['Parchment paper','helpful']],
+  ciabatta:[['Baking stone or heavy baking sheet','needed'],['Bench scraper','helpful'],['Parchment paper','needed']],
+  overnight:[['Dutch oven with a lid','needed'],['Parchment paper','needed']],
+  baguette:[['Baking stone or steel','helpful'],['Metal pan for steam (not glass)','needed'],['Couche, or a floured tea towel','needed'],['Razor blade or very sharp knife, for scoring','needed']],
+  french:[['Baking sheet with parchment','needed'],['Metal or cast-iron pan for steam (not glass)','needed'],['Sharp knife, for scoring','needed']],
+  pan:[['10 in cast-iron skillet (one per pizza)','needed'],['Thin metal spatula','helpful']],
+  detroit:[['Detroit-style pan (10×14 in), or two 8×8 in metal cake pans','needed'],['Thin metal spatula','helpful']],
+  sandwich:[['9×5 in loaf pan','needed'],['Aluminum foil, for tenting','needed']],
+  buns:[['Baking sheet with parchment','needed'],['Pastry brush','helpful']],
+  brioche:[['Stand mixer with dough hook','needed'],['9×5 in loaf pan','needed'],['Pastry brush, for the egg wash','helpful']],
+  cinnamon:[['9×9 in (or 11×7 in) baking pan','needed'],['Rolling pin','needed'],['Parchment paper','needed'],['Hand or stand mixer, for the frosting','helpful']],
+  bagels:[['Big pot, at least 4 in of water deep','needed'],['Slotted spoon or spider','needed'],['Baking sheet with parchment','needed']],
+  naan:[['Cast-iron skillet','needed'],['Rolling pin','helpful']],
+  pita:[['Baking sheet','needed'],['Rolling pin','needed'],['Clean tea towel','needed']],
+  _extra:[['Instant-read thermometer','helpful']]
+};
+function equipFor(){ const l=[...EQUIP._base, ...EQUIP[S.style]]; if(S.leaven==='starter') l.push(['Jar for feeding your starter','needed']); if(S.mix==='mixer') l.push(['Stand mixer with dough hook','needed']); if(S.oven==='pizza'&&STYLES[S.style].kind==='pizza') return [...EQUIP._base,['Pizza oven','needed'],['Pizza peel','needed'],['Lidded containers for the dough balls','needed'],...EQUIP._extra]; return [...l,...EQUIP._extra]; }
+
+/* ---------- Glossary ---------- */
+const GLOSS = [
+  ['hydration','Hydration','How wet the dough is: the weight of water compared with the weight of flour. 70% means 70 g water for every 100 g flour. Higher is stickier, with bigger holes.','bread dough hydration explained'],
+  ['levain','Levain','A batch of sourdough starter built up just for one bake. In this app, "ripe starter" works the same way.','what is a levain sourdough'],
+  ['ripe starter','Ripe starter','A sourdough starter fed a few hours earlier that has risen to about double, looks domed and bubbly, and smells pleasantly sour. That\'s when it\'s strongest.','how to tell when sourdough starter is ready'],
+  ['starter','Sourdough starter','A jar of flour and water full of wild yeast and bacteria, kept alive by regular feeding. It raises bread instead of packet yeast.','sourdough starter for beginners'],
+  ['poolish','Poolish','A loose mix of equal flour and water with a tiny bit of yeast, left to ferment for hours before the main dough. It adds flavour and makes a lighter crumb.','poolish explained'],
+  ['bulk','Bulk rise','The first rise, when the whole batch of dough rests in one container before you divide or shape it.','bulk fermentation explained'],
+  ['stretch and fold','Stretch and fold','Instead of kneading: with a wet hand, grab one side of the dough, stretch it up and fold it over. Turn the bowl and repeat 4 times. It builds strength gently.','stretch and fold sourdough technique'],
+  ['coil-fold','Coil fold','A gentle fold for very wet dough: lift the middle of the dough with wet hands, let the ends fold underneath, turn the container and repeat.','coil fold technique'],
+  ['slap and fold','Slap and fold','A kneading method for very wet dough: lift it, slap it down on the counter, fold it over itself, and repeat for a few minutes.','slap and fold kneading'],
+  ['banneton','Banneton','A basket (often cane or wood pulp) that holds a shaped loaf while it proofs, so it keeps its shape. A bowl lined with a well-floured tea towel works too.','banneton how to use'],
+  ['couche','Couche','A heavy linen cloth, pleated to hold baguettes side by side while they proof. A floured tea towel works.','baguette couche how to use'],
+  ['boule','Boule','A round loaf. Shaping one means pulling the dough tight into a ball so it holds its shape.','how to shape a boule'],
+  ['pre-shape','Pre-shape','A quick first shaping into a loose log or ball, then a short rest, before the final shape.','pre-shape bread dough'],
+  ['score','Scoring','Slashing the top of the loaf with a razor just before baking, so it opens where you want instead of bursting.','how to score bread'],
+  ['retard','Retarding','Slowing the dough down in the fridge, usually overnight. It adds flavour and lets you bake when it suits you.','retarding bread dough fridge'],
+  ['proof','Proofing','The final rise after shaping. Poke test: a gentle finger dent should spring back slowly and leave a small dent.','poke test proofing dough'],
+  ['dimple','Dimpling','Pressing oiled fingertips straight down into focaccia dough all over, to make the classic pits.','how to dimple focaccia'],
+  ['steam','Steam','A burst of steam in the first minutes of baking keeps the crust soft so the loaf can rise fully, then gives a crisp, shiny crust.','steam home oven bread'],
+  ['dutch oven','Dutch oven','A heavy lidded pot (usually cast iron). Baking bread inside it traps steam like a bakery oven.','dutch oven bread baking'],
+  ['egg wash','Egg wash','A beaten egg (often with a splash of milk or water) brushed on just before baking for a shiny, deep golden top.','egg wash bread'],
+  ['barley malt syrup','Barley malt syrup','A thick, dark, malty sweetener. It gives bagels their classic flavour and colour. Honey works if you can\'t find it.','barley malt syrup bagels'],
+  ['brick cheese','Brick cheese','A mild, buttery Wisconsin cheese used on Detroit pizza. Half low-moisture mozzarella and half mild cheddar is a good stand-in.','detroit pizza brick cheese'],
+  ['tent','Tenting','Laying a loose sheet of foil over the top so the crust stops browning while the inside finishes baking.','tent bread with foil'],
+  ['baking steel','Baking steel','A thick steel slab that sits in your oven and stores heat, giving pizza a crisp, browned bottom. A pizza stone does a similar job.','baking steel vs pizza stone']
+];
+const _gre = new RegExp('\\b('+GLOSS.map(g=>g[0].replace(/[-]/g,'[- ]?')).join('|')+')(s|ed|ing|ing)?\\b','i');
+function gloss(txt){
+  const used=new Set(); let out='', rest=String(txt).replace(/</g,'&lt;');
+  for(let n=0;n<4;n++){
+    const re=new RegExp('\\b('+GLOSS.map(g=>g[0].replace(/[-]/g,'[- ]?')).filter((_,i)=>!used.has(i)).join('|')+')(s|ed|ing)?\\b','i');
+    const m=rest.match(re); if(!m) break;
+    const i=GLOSS.findIndex(g=>new RegExp('^'+g[0].replace(/[-]/g,'[- ]?')+'$','i').test(m[1])); used.add(i);
+    out+=rest.slice(0,m.index)+`<button type="button" class="term" data-term="${i}">${m[0]}</button>`; rest=rest.slice(m.index+m[0].length);
+  }
+  return out+rest;
+}
+
+/* ---------- Render ---------- */
+let P,Q,STEPS,TITLE='';
+function render(){
+  const st=STYLES[S.style];
+  if(S.sizeIdx>=st.sizes.length) S.sizeIdx=st.sizes.length-1;
+  P=plan(); Q=quantities(P); STEPS=buildSteps(P,Q);
+  const starter=S.leaven==='starter';
+  const yShow = Q.yeast? Q.yeast*yeastMult():0;
+  const unitWord = st.units || (st.kind==='pizza'?['pizza','pizzas']:st.kind==='tray'?['tray','trays']:['loaf','loaves']);
+  const noun = S.count===1?unitWord[0]:unitWord[1];
+  const sh=d=>fmtWhen(d).replace(/^(Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday)/,m=>m.slice(0,3)).replace(/^(\w)/,c=>c.toUpperCase());
+  TITLE = `${st.name}: ${S.count} ${noun}, ready ${fmtWhen(P.eat)}`;
+
+  // hero
+  if(render._art!==S.style){ $('#heroArt').innerHTML=ART.photo(S.style); render._art=S.style; }
+  $('#styleName').textContent=st.name;
+  $('#styleMeta').textContent = st.kind==='pizza'
+    ? `${S.count} × ${st.sizes[S.sizeIdx]}″ pizzas · ${Math.round(Q.unit)} g balls`
+    : `${S.count} ${noun} · ${(Q.dough/1000).toFixed(2)} kg dough`;
+  $('#headline').textContent = `Ready ${sh(P.eat)}`;
+  $('#subline').textContent = needFeed() ? `Feed starter ${fmtWhen(new Date(+P.start-6*HR))}, mix ${fmtWhen(P.start)}` : `Start ${fmtWhen(P.start)}`;
+  $('#warns').innerHTML = P.warns.map(w=>`<p class="warn">${w}</p>`).join('');
+  if(typeof renderChips==='function'){ if(STYLES[S.style].group!==chipGroup){ chipGroup=STYLES[S.style].group; } renderChips(); }
+
+  // timeline + stats
+  const tb = timelineBar(); $('#tbar').innerHTML = tb; $('#tbar2').innerHTML = tb;
+  $('#stHyd').textContent=Math.round(Q.hyd)+'%';
+  $('#stTotal').textContent=fmtH((P.eat-P.start)/HR + (needFeed()?6:0)).replace(' ','');
+  $('#stCold').textContent=P.cold? Math.round(P.cold)+'h' : 'none';
+  const good = new Date(+P.eat + st.goodFor*HR);
+  $('#keepNote').textContent = st.kind==='pizza' ? `Dough balls keep until about ${fmtWhen(good)}.` : `Best eaten within ${st.goodFor} h of baking.`;
+
+  // ingredients checklist
+  const pct = x => (x/Q.flour*100);
+  const rows = [];
+  rows.push(['Flour'+(st.ww?`<span class="spoon">${g(Q.wwFlour)} of it whole wheat</span>`:''), g(Q.addFlour), pct(Q.addFlour).toFixed(0)+'%','flour']);
+  const liqLbl = st.liqNote ? `${st.liquid||'Water'}, ${st.liqNote}` : `${st.liquid||'Water'} at ${fmtT(Q.waterC)}`;
+  rows.push([liqLbl, g(Q.addWater), (starter?Math.round(Q.addWater/Q.flour*100):Math.round(Q.hyd))+'%','water']);
+  rows.push(['Salt', g(Q.saltG, Q.saltG<20?1:0), Q.salt.toFixed(1)+'%','salt']);
+  const recTxt = st.recipeLeaven ? `<span class="spoon rec">Recipe: ${st.recipeLeaven}. ${(starter===(S.style==='sourdough'))?'Adjusted for your timing and kitchen.':'That recipe uses '+(starter?'yeast':'a starter')+', so this amount is an estimate.'}</span>` : `<span class="spoon rec">Scaled to your timing and kitchen.</span>`;
+  if(starter) rows.push([gloss('Ripe starter')+(settings.pro?' (100%)':'')+recTxt, g(Q.starter), P.starterPct.toFixed(0)+'%','leaven']);
+  else rows.push([yeastName().replace(/^\w/,c=>c.toUpperCase())+recTxt, g(yShow, yShow<10?2:1)+(spoons(yShow)?`<span class="spoon">${spoons(yShow)}</span>`:''), (P.yeastPct*yeastMult()).toFixed(2)+'%','leaven']);
+  if(Q.oil) rows.push(['Olive oil', g(Q.oil), st.oil+'%','oil']);
+  if(Q.sugar) rows.push([st.sweet||'Sugar', g(Q.sugar), st.sugar+'%','sugar']);
+  if(Q.poolishFlour && st.poolishPinch) rows.push(['Poolish<span class="spoon">Made from the flour and water above</span>', `${g(Q.poolishFlour)} + ${g(Q.poolishFlour)}`, '','poolish']);
+  (st.extras||[]).forEach(([k,l,pc])=>{ const gr=Q.x[k]; const egg = /egg/i.test(l) ? `<span class="spoon">about ${Math.max(1,Math.round(gr/50*2)/2)} large</span>` : ''; rows.push([gloss(l)+egg, g(gr), pc.toFixed(1).replace('.0','')+'%', k]); });
+  if(st.tops) st.tops(Q.sc).forEach((r,i)=>rows.push([r[0], r[1], '', 'top'+i]));
+  if(st.brine) rows.push(['Brine: water + salt', `${g(Q.brineWater)} + ${g(Q.brineSalt,1)}`, '','brine']);
+  $('#ingTable').innerHTML = rows.map(r=>`<li data-k="${r[3]}" class="${S.ing[r[3]]?'done':''}" role="checkbox" aria-checked="${!!S.ing[r[3]]}" tabindex="0"><span class="cb"></span><span class="nm">${r[0].replace('Poolish<','<button type="button" class="term" data-term="4">Poolish</button><')}</span><span class="g">${r[1]}</span><span class="p pro-only">${r[2]}</span></li>`).join('');
+  $('#flourTip').textContent='Use '+st.flourName.replace(/^\w/,c=>c.toLowerCase())+'. Tap each ingredient as you weigh it.';
+  $('#ingNote').textContent = (settings.loss?`Includes ${settings.loss}% extra for dough left on the bowl and bench. `:'') + (starter
+    ? (settings.pro?`Hydration counts the water and flour inside the starter. Percentages are of total flour (${g(Q.flour)}).`:'')
+    : `Spoon amounts are level measuring spoons.${settings.pro?' Percentages are of total flour.':''} ${settings.yeastType!=='IDY'?`Converted from ${g(Q.yeast,2)} instant yeast.`:''}`);
+
+  $('#hydIn').value=Q.hyd; $('#hydVal').textContent=Math.round(Q.hyd)+'%';
+  const dh=Math.round(Q.hyd-st.hyd);
+  $('#hydRecipe').innerHTML = dh ? `· recipe is ${Math.round(st.hyd)}% <button type="button" class="linkbtn" id="hydReset" style="padding:0;font-size:12px">reset</button>` : '· recipe default';
+  $('#hydHint').textContent = Q.hyd>=80 ? 'Very wet: sticky, slack dough with big open holes. Use wet hands and folds instead of kneading.'
+    : Q.hyd>=70 ? 'Wet: softer, stickier dough with a more open crumb.'
+    : Q.hyd>=63 ? 'Medium: easy to handle, balanced crumb.'
+    : 'Drier: firm and easy to shape, with a tighter crumb.';
+  $('#src').innerHTML = `Based on ${st.src} ${st.links.map(l=>`<a href="${l[1]}" target="_blank" rel="noopener">${l[0]}</a>`).join(' · ')}. Yeast and starter are estimated from your timing, a ${fmtT(P.ddt)} target dough temperature, a ${fmtT(settings.roomC)} kitchen and a ${fmtT(settings.fridgeC)} fridge. Treat them as a starting point.`;
+
+  // adjust sheet
+  $('#adjSum').innerHTML = `<b>${g(Q.addFlour)}</b> flour · <b>${g(Q.addWater)}</b> water · <b>${starter?g(Q.starter)+'</b> starter':g(yShow,yShow<10?2:1)+'</b> yeast'} · ready <b>${sh(P.eat)}</b>`;
+  $('#cVal').textContent=S.count; $('#cLbl').textContent=st.kind==='pizza'?(S.count===1?'ball':'balls'):noun;
+  if(st.kind==='pizza'){ $('#sVal').textContent=st.sizes[S.sizeIdx]+'″'; $('#sLbl').textContent='pizza size'; }
+  else { $('#sVal').textContent=st.sizes[S.sizeIdx].replace(/ pan$/,''); $('#sLbl').textContent='size'; }
+  $('#sMinus').disabled = $('#sPlus').disabled = st.sizes.length<2;
+  $('#nowSw').checked = S.mode==='hours';
+  $('#modeReady').hidden=S.mode!=='readyBy'; $('#modeHours').hidden=S.mode!=='hours';
+  $('#startIn').value=toLocalInput(P.start); $('#eatIn').value=toLocalInput(S.eat);
+  $('#startTxt').textContent=sh(P.start); $('#eatTxt').textContent=sh(S.eat);
+  const rec=recommendedStart(); $('#recBtn').hidden = Math.abs(rec-P.start)<60e3; $('#recBtn').textContent=`Use the recommended start: ${fmtWhen(rec)}`;
+  $('#ripeRow').hidden = !starter; $('#ripeIn').checked=S.ripe;
+  $('#kTemp').textContent=fmtT2(settings.roomC);
+  $$('[data-q]').forEach(b=>b.setAttribute('aria-pressed', (b.dataset.q==='now')===(S.mode==='hours')));
+  $('#qHours').hidden = S.mode!=='hours'; $('#qHrsIn').value=S.hours;
+  $('#qHrsVal').textContent = S.hours+' h, '+fmtWhen(new Date(+roundTo15(new Date())+S.hours*HR));
+  $('#hrsIn').value=S.hours; $('#hrsVal').textContent=S.hours+' h ('+sh(new Date(+roundTo15(new Date())+S.hours*HR))+')';
+  $('#ovenField').hidden = st.kind!=='pizza';
+  $('#ovenIn').value=S.oven; $('#mixIn').value=S.mix;
+  $$('[data-leaven]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.leaven===S.leaven));
+  $('#saltIn').value=Q.salt; $('#saltVal').textContent=Q.salt.toFixed(1)+'%';
+
+  $('#equip').innerHTML = equipFor().map(([n,t])=>`<li><span>${gloss(n)}</span><small>${t}</small></li>`).join('');
+  document.body.classList.toggle('pro', !!settings.pro);
+  $('#proSw').checked = $('#proSw2').checked = !!settings.pro;
+  // steps view
+  $('#stepsHead').textContent = `${st.name}, ready ${fmtWhen(P.eat)}`;
+  $('#stepsSub').textContent = `${STEPS.length-1} steps. Tick them off as you go.`;
+  $('#timeline').innerHTML = STEPS.map(s=>{
+    const id=s.title+'|'+(+s.at); const done=S.done[id];
+    return `<li class="${s.cls||''}${done?' done':''}"><input type="checkbox" data-id="${id}" ${done?'checked':''} aria-label="${s.title} done"><div><div class="when">${fmtWhen(s.at)}${s.dur>=0.25&&!s.end?` · ${fmtH(s.dur)}`:''}</div><div class="t">${s.title}</div>${s.detail?`<div class="d">${gloss(s.detail)}</div>`:''}</div></li>`;
+  }).join('');
+  $('#calAll').href = gcal(TITLE, P.start, Math.max(0.5,(P.eat-P.start)/HR), STEPS.map(x=>`${fmtWhen(x.at)}: ${x.title}${x.detail?' — '+x.detail:''}`).join('\n'));
+
+  // settings
+  $$('[data-unit]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.unit===settings.unit));
+  $('#roomIn').value=settings.roomC; $('#roomVal').textContent=fmtT2(settings.roomC);
+  $('#yeastType').value=settings.yeastType;
+  $('#fridgeIn').value=settings.fridgeC; $('#fridgeVal').textContent=fmtT2(settings.fridgeC);
+  $('#lossIn').value=settings.loss; $('#lossVal').textContent=settings.loss+'%';
+  $('#onbRoom').textContent=fmtT2(settings.roomC); $('#onbFr').textContent=fmtT2(settings.fridgeC);
+  $$('[data-yt]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.yt===settings.yeastType));
+  renderSaved();
+}
+
+const PHASE = {counter:['On the counter','var(--gold)'], starter:['Starter','var(--starterc)'], fridge:['In the fridge','var(--fridge)'], oven:['Oven','var(--oven)'], cool:['Cooling','var(--coolc)']};
+function phaseOf(s){ return s.title==='Feed your starter'?'starter' : s.cls==='cold'?'fridge' : /^(Bake|Heat)/.test(s.title)?'oven' : s.title==='Cool'?'cool' : 'counter'; }
+function timelineBar(){
+  const segs=STEPS.filter(s=>!s.end && s.dur>0);
+  const t0=Math.min(...segs.map(s=>+s.at)), t1=+P.eat, T=Math.max(1,t1-t0);
+  const pos=t=>Math.max(0,Math.min(100,(t-t0)/T*100));
+  let h='<div class="tb">';
+  // night bands 10 p.m.–7 a.m.
+  const d=new Date(t0); d.setHours(0,0,0,0); d.setDate(d.getDate()-1);
+  for(let day=+d; day<t1; day+=864e5){
+    const a=day+22*HR, b=day+31*HR; if(b>t0 && a<t1) h+=`<div class="night" style="left:${pos(a)}%;width:${pos(b)-pos(a)}%"></div>`;
+  }
+  const used=new Set();
+  segs.forEach(s=>{const k=phaseOf(s); used.add(k); h+=`<div class="seg" style="left:${pos(+s.at)}%;width:${Math.max(.8,pos(+s.at+s.dur*HR)-pos(+s.at))}%;background:${PHASE[k][1]}" title="${s.title}"></div>`;});
+  const m=new Date(t0); m.setHours(24,0,0,0);
+  for(let x=+m; x<t1; x+=864e5){ const p=pos(x); if(p>8&&p<92) h+=`<div class="day" style="left:${p}%"><span>${DAYS[new Date(x).getDay()].slice(0,3)}</span></div>`; }
+  const tShort=t=>new Date(t).toLocaleTimeString('en-CA',{hour:'numeric',minute:'2-digit'});
+  h+=`<div class="end" style="left:0">${tShort(t0)}</div><div class="end" style="right:0">${tShort(t1)}</div></div>`;
+  h+=`<div class="legend">${Object.keys(PHASE).filter(k=>used.has(k)).map(k=>`<span><i style="background:${PHASE[k][1]}"></i>${PHASE[k][0]}</span>`).join('')}<span><i style="background:repeating-linear-gradient(135deg,var(--muted) 0 2px,transparent 2px 4px)"></i>Night (10 p.m.–7 a.m.)</span></div>`;
+  return h;
+}
+
+/* ---------- Natural language ---------- */
+function parse(text){
+  let s=' '+text.toLowerCase().replace(/[’']/g,"'")+' ';
+  const out={};
+  if(/detroit|sicilian/.test(s)) out.style='detroit';
+  else if(/pan pizza|cast.?iron pizza|skillet pizza|pizza hut/.test(s)) out.style='pan';
+  else if(/cinnamon/.test(s)) out.style='cinnamon';
+  else if(/brioche/.test(s)) out.style='brioche';
+  else if(/bagel/.test(s)) out.style='bagels';
+  else if(/\bnaans?\b/.test(s)) out.style='naan';
+  else if(/\bpitas?\b/.test(s)) out.style='pita';
+  else if(/burger|hamburger|\bbuns?\b|sliders?|dinner rolls?/.test(s)) out.style='buns';
+  else if(/sandwich|white bread|honey.?wheat|toast bread|loaf pan/.test(s)) out.style='sandwich';
+  else if(/neapolitan|napoli/.test(s)) out.style='neapolitan';
+  else if(/new york|\bny\b|nyc/.test(s)) out.style='ny';
+  else if(/focac|faccia|foccacia/.test(s)) out.style='focaccia';
+  else if(/overnight ciabatta|no.?knead|dutch oven ciabatta/.test(s)) out.style='overnight';
+  else if(/ciabatta/.test(s)) out.style='ciabatta';
+  else if(/baguette/.test(s)) out.style='baguette';
+  else if(/french (bread|loa)/.test(s)) out.style='french';
+  else if(/sourdough (loaf|bread|boule)|\bloaf|\bboule|country (loaf|bread)/.test(s)) out.style='sourdough';
+  else if(/pizza/.test(s)) out.style='neapolitan';
+  if(/starter|levain|sourdough/.test(s)) out.leaven='starter';
+  if(/\byeast\b/.test(s) && !/starter/.test(s)) out.leaven='yeast';
+  if(out.style==='sourdough' && !/yeast/.test(s)) out.leaven='starter';
+  // count
+  const words = NUMW.join('|');
+  let m = s.match(new RegExp(`\\b(\\d{1,2}|${words}|a|an|one)\\s+(?:x\\s+)?(?:(?:sandwich|burger|hamburger|slider|cinnamon|french|sourdough|overnight|detroit|brioche)\\s+)?(?:\\d{2}\\s*(?:"|in|inch)\\s+)?(?:neapolitan|ny|new york|pizzas?|pies?|balls?|loa(?:f|ves)|baguettes?|french|boules?|bagels?|naans?|pitas?|buns?|sliders?|rolls?|pans?|brioches?|trays?|pans?|ciabattas?|focaccias?|sourdough)`));
+  if(m){ const w=m[1]; out.count = /^\d+$/.test(w)?+w : (w==='a'||w==='an')?1 : NUMW.indexOf(w); }
+  const pm = s.match(new RegExp(`\\b(\\d{1,2}|${words})\\s+(?:people|persons?|guests|adults|of us|friends|kids)`));
+  if(pm){ const w=pm[1]; out.people = /^\d+$/.test(w)?+w : NUMW.indexOf(w); }
+  // words we didn't use
+  const KNOWN=new RegExp('^('+'skillet|cast|iron|hut|detroit|pan|sicilian|cinnamon|rolls?|buns?|burger|hamburger|sliders?|dinner|brioche|bagels?|naans?|pitas?|sandwich|white|honey|wheat|toast|\\d+(:\\d+)?(am|pm|h|hrs?|in|")?|a\\.?m\\.?|p\\.?m\\.?|neapolitans?|napoli|new|york|ny|nyc|pizzas?|pies?|balls?|focaccias?|faccia|foccacia|sourdough|loa(f|ves)|bread|boules?|country|ciabattas?|overnight|no-?knead|knead|dutch|oven|baguettes?|french|starter|levain|yeast|instant|home|pizza|ooni|wood|gozney|roccbox|regular|kitchen|mixer|kitchenaid|stand|hand|half|sheet|pan|9x13|9|13|x|by|inch(es)?|in|people|persons?|guests|adults|of|us|friends|kids|have|got|within|about|hours?|hrs?|from|now|time|tonight|today|this|evening|tomorrow|next|noon|lunch|dinner|supper|breakfast|morning|at|for|on|the|a|an|and|with|i|we|want|wanna|to|make|making|bake|baking|need|some|please|ready|me|my|be|it|is|by|around|until|sun(day)?|mon(day)?|tue(s|sday)?|wed(nesday)?|thu(r|rs|rsday)?|fri(day)?|sat(urday)?'+'|'+NUMW.join('|')+')$');
+  out.unknown=[...new Set(text.toLowerCase().replace(/[,.!?;()]/g,' ').split(/\s+/).filter(t=>t&&!KNOWN.test(t.replace(/['’]s$/,''))))];
+  // size
+  m = s.match(/(\d{2})\s*(?:"|''|-?\s?inch|in\b)/); if(m) out.size=+m[1];
+  if(/half sheet|sheet pan/.test(s)) out.sizeName='Half';
+  if(/9\s*x\s*13|9x13|9 by 13/.test(s)) out.sizeName='9×13';
+  // oven/mix
+  if(/pizza oven|ooni|wood|gozney|roccbox/.test(s)) out.oven='pizza';
+  if(/home oven|oven at home|regular oven|kitchen oven/.test(s)) out.oven='home';
+  if(/mixer|kitchenaid|stand/.test(s)) out.mix='mixer';
+  if(/by hand|hand/.test(s)) out.mix='hand';
+  // time: "I have 8 hours", "in 8 hours", "8 hours from now"
+  m = s.match(/(?:have|got|in|within)\s+(?:about\s+)?(\d{1,2})\s*(?:h|hrs?|hours?)\b/) || s.match(/(\d{1,2})\s*(?:h|hrs?|hours?)\s+(?:from now|time)/);
+  if(m){ out.mode='hours'; out.hours=+m[1]; out.unknown=(out.unknown||[]); return out; }
+  // day
+  const now=new Date(); let day=null;
+  if(/tonight|today|this evening/.test(s)) day=0;
+  else if(/tomorrow/.test(s)) day=1;
+  else { for(let i=0;i<7;i++){ if(new RegExp('\\b'+DAYS[i].toLowerCase()+'|\\b'+DAYS[i].slice(0,3).toLowerCase()+'\\b').test(s)){ day=(i-now.getDay()+7)%7; break; } } }
+  s=s.replace(new RegExp(`\\b(?:for\\s+)?(\\d{1,2}|${words})\\s+(?:people|persons?|guests|adults|of us|friends|kids)`),' ');
+  // clock
+  let hr=null,mn=0;
+  m = s.match(/\b(?:at|for|by|@)\s*(\d{1,2})(?::(\d{2}))?\s*(am|pm|a\.m\.|p\.m\.)?/) || s.match(/\b(\d{1,2})(?::(\d{2}))?\s*(am|pm|a\.m\.|p\.m\.)/) || s.match(/\b(\d{1,2}):(\d{2})\b/);
+  if(m){ hr=+m[1]; mn=m[2]?+m[2]:0; const ap=m[3]||''; if(/p/.test(ap)&&hr<12) hr+=12; else if(/a/.test(ap)&&hr===12) hr=0; else if(!ap && hr>=1 && hr<=10 && !(out.style && STYLES[out.style].morning && hr>=6)) hr+=12; }
+  if(/noon|lunch/.test(s)&&hr===null) hr=12;
+  if(/dinner|supper/.test(s)&&hr===null) hr=18;
+  if(/breakfast|morning/.test(s)&&hr===null) hr=9;
+  if(day!==null||hr!==null){
+    const d=new Date(); d.setSeconds(0,0);
+    d.setDate(d.getDate()+(day??0)); d.setHours(hr??18, mn, 0, 0);
+    if(day===null && d<now) d.setDate(d.getDate()+1);
+    if(day===0 && d<now && !/tonight|today/.test(s)) d.setDate(d.getDate()+7);
+    out.mode='readyBy'; out.eat=d;
+  }
+  return out;
+}
+function applyParse(o){
+  if(o.style && o.style!==S.style){ S.ing={}; S.style=o.style; S.sizeIdx=STYLES[o.style].defSize; S.hyd=S.salt=null; if(!o.count) S.count = STYLES[o.style].defCount ?? (STYLES[o.style].kind==='pizza'?4:1); }
+  const st=STYLES[S.style];
+  if(o.style){ S.oven=o.oven||'home'; S.mix=o.mix||'hand'; }
+  if(o.leaven) S.leaven=o.leaven; else if(o.style) S.leaven = S.style==='sourdough'?'starter':'yeast';
+  if(o.count) S.count=clamp(o.count,1,24);
+  if(o.people && !o.count){ const st2=STYLES[S.style], kind=st2.kind; S.count=clamp(st2.perUnit?Math.ceil(o.people/st2.perUnit):(kind==='pizza'?o.people:Math.ceil(o.people/(kind==='tray'?8:6))),1,24); }
+  if(o.size && st.kind==='pizza'){ let best=0; st.sizes.forEach((z,i)=>{if(Math.abs(z-o.size)<Math.abs(st.sizes[best]-o.size))best=i}); S.sizeIdx=best; }
+  if(o.sizeName && st.kind==='tray') S.sizeIdx = st.sizes.findIndex(z=>z.startsWith(o.sizeName));
+  if(o.oven) S.oven=o.oven; if(o.mix) S.mix=o.mix;
+  if(o.mode==='hours'){ S.mode='hours'; S.hours=clamp(o.hours,2,72); }
+  if(o.mode==='readyBy'){ S.mode='readyBy'; S.eat=o.eat; S.start=recommendedStart(); }
+  else if(o.style||o.leaven) { if(S.mode==='readyBy') S.start=recommendedStart(); }
+}
+
+/* ---------- Saved ---------- */
+function renderSaved(){
+  const list=store.get('rise.saved',[]);
+  $('#savedList').innerHTML = list.length ? list.map((b,i)=>`<li>${ART.icon(b.style,'b')}<button class="open" data-open="${i}"><b>${b.title}</b><br><small style="color:var(--muted)">${b.leaven==='starter'?'Sourdough starter':'Instant yeast'}</small></button><button class="x" data-del="${i}" aria-label="Delete">×</button><textarea class="notes" data-note="${i}" placeholder="How did it turn out? (notes for next time)">${(b.note||'').replace(/</g,'&lt;')}</textarea></li>`).join('')
+    : `<li class="empty" style="display:block;border:0">${ART.icon('sourdough')}No bakes saved yet. Plan one, then tap the bookmark next to Start baking.</li>`;
+}
+
+/* ---------- Events ---------- */
+function toast(m){ if($('#km').classList.contains('open') && !/Time/.test(m)) return;const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('on'),1800)}
+function show(v){ $$('nav.tabs [data-view]').forEach(b=>b.setAttribute('aria-selected',b.dataset.view===v)); ['plan','steps','saved','settings'].forEach(x=>$('#v-'+x).hidden=x!==v); window.scrollTo({top:0}); }
+$$('nav.tabs [data-view]').forEach(b=>b.onclick=()=>show(b.dataset.view));
+$('#toSteps').onclick=()=>show('steps');
+function countLabel(){
+  const n=S.count, one=n===1;
+  return ({neapolitan:`${n} Neapolitan pizza${one?'':'s'}`, ny:`${n} New York pizza${one?'':'s'}`, focaccia:`${n} tray${one?'':'s'} of focaccia`, sourdough:`${n} sourdough loa${one?'f':'ves'}`, ciabatta:`${n} ciabatta loa${one?'f':'ves'}`, overnight:`${n} overnight ciabatta loa${one?'f':'ves'}`, baguette:`${n} baguette${one?'':'s'}`, french:`${n} French loa${one?'f':'ves'}`, detroit:`${n} Detroit pizza${one?'':'s'}`, pan:`${n} pan pizza${one?'':'s'}`, sandwich:`${n} sandwich loa${one?'f':'ves'}`, buns:`${n} ${S.sizeIdx?'slider':'burger'} bun${one?'':'s'}`, brioche:`${n} brioche loa${one?'f':'ves'}`, cinnamon:`${n} pan${one?'':'s'} of cinnamon rolls (${9*n})`, bagels:`${n} bagel${one?'':'s'}`, naan:`${n} naan`, pita:`${n} pita${one?'':'s'}`})[S.style];
+}
+function understood(o){
+  const st=STYLES[S.style], P2=plan(), bits=[];
+  bits.push(`<b>${countLabel()}</b>${o.people&&!o.count?` (for ${o.people} people: ${st.perUnit?(st.perUnit===1?'one each':`about ${st.perUnit} per ${(st.units||['batch'])[0]}`):st.kind==='pizza'?'one each':st.kind==='tray'?'about 8 per tray':'about 6 per loaf'})`:''}${o.style?'':' (dough unchanged)'}`);
+  bits.push(`ready <b>${fmtWhen(P2.eat)}</b>${o.mode?'':' (time unchanged)'}`);
+  if(o.leaven) bits.push(o.leaven==='starter'?'with sourdough starter':'with yeast');
+  let h=`I planned ${bits.join(', ')}`; if(!/\.(<\/b>)?$/.test(h)) h+='.';
+  if(o.unknown&&o.unknown.length) h+=` <span class="unk">I didn't use: ${o.unknown.map(w=>`“${w.replace(/</g,'')}”`).join(', ')}.</span>`;
+  h+=` <button type="button" class="linkbtn" id="fixIt">Change it</button>`;
+  return h;
+}
+$('#askForm').onsubmit=e=>{e.preventDefault(); const v=$('#ask').value.trim(); if(!v){$('#ask').focus();return;} const o=parse(v); applyParse(o); render(); $('#heard').innerHTML=understood(o); $('#heard').hidden=false; };
+document.addEventListener('click',e=>{ if(e.target.id==='fixIt') $('#adjust').classList.add('open'); if(e.target.id==='heardX'){ $('#heard').hidden=true; } });
+$$('[data-ex]').forEach(b=>b.onclick=()=>{ $('#ask').value=b.dataset.ex; applyParse(parse(b.dataset.ex)); render(); });
+$('#cMinus').onclick=()=>{S.count=Math.max(1,S.count-1);render()};
+$('#cPlus').onclick=()=>{S.count=Math.min(24,S.count+1);render()};
+$('#sMinus').onclick=()=>{S.sizeIdx=Math.max(0,S.sizeIdx-1);render()};
+$('#sPlus').onclick=()=>{S.sizeIdx=Math.min(STYLES[S.style].sizes.length-1,S.sizeIdx+1);render()};
+$$('[data-mode]').forEach(b=>b.onclick=()=>{S.mode=b.dataset.mode;render()});
+$$('[data-leaven]').forEach(b=>b.onclick=()=>{S.leaven=b.dataset.leaven; if(S.mode==='readyBy') S.start=recommendedStart(); render()});
+$('#startIn').onchange=e=>{const d=new Date(e.target.value); if(!isNaN(d)){S.start=d; if(S.start>=S.eat) S.eat=new Date(+d+6*HR);} render()};
+$('#eatIn').onchange=e=>{const d=new Date(e.target.value); if(!isNaN(d)){S.eat=d; if(S.start>=S.eat) S.start=recommendedStart();} render()};
+['startIn','eatIn'].forEach(id=>$('#'+id).addEventListener('click',e=>{try{e.target.showPicker()}catch(_){}}));
+$('#ripeIn').onchange=e=>{S.ripe=e.target.checked; if(S.mode==='readyBy') S.start=recommendedStart(); render()};
+$('#kMinus').onclick=()=>{settings.roomC=clamp(settings.roomC-(settings.unit==='F'?5/9:0.5),16,30);store.set('rise.settings',settings);render()};
+$('#kPlus').onclick=()=>{settings.roomC=clamp(settings.roomC+(settings.unit==='F'?5/9:0.5),16,30);store.set('rise.settings',settings);render()};
+$('#recBtn').onclick=()=>{S.start=recommendedStart();render()};
+$('#hrsIn').oninput=e=>{S.hours=+e.target.value;render()};
+$('#ovenIn').onchange=e=>{S.oven=e.target.value;render()};
+$('#mixIn').onchange=e=>{S.mix=e.target.value;render()};
+$('#hydIn').oninput=e=>{S.hyd=+e.target.value;render()};
+$('#hMinus').onclick=()=>{S.hyd=clamp(Math.round((S.hyd??STYLES[S.style].hyd))-1,50,95);render()};
+$('#hPlus').onclick=()=>{S.hyd=clamp(Math.round((S.hyd??STYLES[S.style].hyd))+1,50,95);render()};
+document.addEventListener('click',e=>{if(e.target.id==='hydReset'){S.hyd=null;render()}});
+$('#saltIn').oninput=e=>{S.salt=+e.target.value;render()};
+$('#resetTech').onclick=()=>{S.salt=null;render()};
+$$('[data-unit]').forEach(b=>b.onclick=()=>{settings.unit=b.dataset.unit;store.set('rise.settings',settings);render()});
+$('#roomIn').oninput=e=>{settings.roomC=+e.target.value;store.set('rise.settings',settings);render()};
+$('#fridgeIn').oninput=e=>{settings.fridgeC=+e.target.value;store.set('rise.settings',settings);render()};
+$('#lossIn').oninput=e=>{settings.loss=+e.target.value;store.set('rise.settings',settings);render()};
+$('#yeastType').onchange=e=>{settings.yeastType=e.target.value;store.set('rise.settings',settings);render()};
+$('#timeline').onchange=e=>{const id=e.target.dataset.id; if(!id)return; S.done[id]=e.target.checked; render()};
+$('#copySched').onclick=async()=>{
+  const txt=TITLE+'\n\n'+STEPS.map(s=>`${fmtWhen(s.at)} — ${s.title}${s.detail?': '+s.detail:''}`).join('\n');
+  try{ await navigator.clipboard.writeText(txt); toast('Schedule copied'); }catch(e){ toast('Copy isn\'t allowed here'); }
+};
+$('#saveBtn').onclick=()=>{
+  const list=store.get('rise.saved',[]);
+  list.unshift({title:TITLE, ripe:S.ripe, style:S.style,count:S.count,sizeIdx:S.sizeIdx,leaven:S.leaven,mode:S.mode,eat:+S.eat,start:+S.start,hours:S.hours,oven:S.oven,mix:S.mix,hyd:S.hyd,salt:S.salt});
+  store.set('rise.saved',list.slice(0,30)); renderSaved(); toast('Saved');
+};
+$('#savedList').oninput=e=>{const n=e.target.dataset.note; if(n===undefined)return; const list=store.get('rise.saved',[]); if(list[+n]){list[+n].note=e.target.value; store.set('rise.saved',list);} };
+$('#savedList').onclick=e=>{
+  const o=e.target.closest('[data-open]'), d=e.target.closest('[data-del]'); const list=store.get('rise.saved',[]);
+  if(d){ list.splice(+d.dataset.del,1); store.set('rise.saved',list); renderSaved(); return; }
+  if(o){ const b=list[+o.dataset.open]; const {note,title,...rest}=b; Object.assign(S,rest,{eat:new Date(b.eat),start:new Date(b.start),done:{}}); render(); show('plan'); }
+};
+// style sheet
+function openSheet(){
+  const groups={}; Object.entries(STYLES).forEach(([k,v])=>(groups[v.group]=groups[v.group]||[]).push([k,v]));
+  $('#sheetBody').innerHTML = Object.entries(groups).map(([gname,items])=>`<div class="grp">${(GROUPS.find(x=>x[0]===gname)||[0,gname])[1]}</div><div class="optgrid">`+items.map(([k,v])=>`<button class="opt" data-style="${k}" aria-pressed="${k===S.style}">${ART.icon(k)}<div><b>${v.name}</b><span>${v.blurb.split('.')[0]}</span></div></button>`).join('')+'</div>').join('');
+  $('#sheet').classList.add('open'); $('#sheetBody button').focus();
+}
+$('#styleBtn').onclick=openSheet;
+$('#sheet').onclick=e=>{
+  const b=e.target.closest('[data-style]');
+  if(b){ applyParse({style:b.dataset.style}); render(); }
+  if(b||e.target.id==='sheet') $('#sheet').classList.remove('open');
+};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')$('#sheet').classList.remove('open')});
+
+let km={i:0,left:0,run:false,tick:null,lock:null};
+function kmSteps(){return STEPS.filter(x=>!x.end)}
+function kmFirst(){const a=kmSteps();const i=a.findIndex(x=>!S.done[x.title+'|'+(+x.at)]);return i<0?a.length-1:i}
+function kmRender(){
+  const a=kmSteps(), st=a[km.i]; if(!st) return;
+  if(kmRender._a!==S.style){$('#kmArt').innerHTML=ART.photo(S.style);kmRender._a=S.style;}
+  $('#kmCount').textContent=`Step ${km.i+1} of ${a.length}`;
+  $('#kmWhen').textContent=fmtWhen(st.at)+(st.dur>=0.25?` · ${fmtH(st.dur)}`:'');
+  $('#kmTitle').textContent=st.title; $('#kmText').innerHTML=gloss(st.detail);
+  const timed = st.dur>0 && st.dur<=8 && st.cls!=='cold';
+  $('#kmTimer').hidden=!timed;
+  if(!km.run) km.left=Math.round(st.dur*3600);
+  $('#kmClock').textContent=clock(km.left); $('#kmGo').textContent=km.run?'Pause':'Start timer';
+  $('#kmPrev').disabled=km.i===0; $('#kmNext').textContent=km.i===a.length-1?'Done':'Done, next step';
+}
+const clock=s=>{const h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;return (h?h+':':'')+String(m).padStart(h?2:1,'0')+':'+String(x).padStart(2,'0')};
+function beep(){try{const c=new (window.AudioContext||window.webkitAudioContext)();[0,0.4,0.8].forEach(t=>{const o=c.createOscillator(),g=c.createGain();o.frequency.value=880;g.gain.value=.2;o.connect(g);g.connect(c.destination);o.start(c.currentTime+t);o.stop(c.currentTime+t+0.25)})}catch(e){} try{navigator.vibrate&&navigator.vibrate([300,150,300])}catch(e){}}
+function kmStop(){clearInterval(km.tick);km.run=false}
+$('#kmBtn').onclick=async()=>{$('#toast').classList.remove('on');km.i=kmFirst();kmStop();kmRender();$('#km').classList.add('open');try{km.lock=await navigator.wakeLock.request('screen')}catch(e){}};
+$('#kmClose').onclick=()=>{kmStop();$('#km').classList.remove('open');try{km.lock&&km.lock.release()}catch(e){};render()};
+$('#kmGo').onclick=()=>{ if(km.run){kmStop();kmRender();return;} km.run=true; kmRender(); km.tick=setInterval(()=>{km.left--; $('#kmClock').textContent=clock(Math.max(0,km.left)); if(km.left<=0){kmStop();beep();$('#kmGo').textContent='Time’s up';toast('Time’s up: '+$('#kmTitle').textContent)}},1000); };
+$('#kmPrev').onclick=()=>{kmStop();km.i=Math.max(0,km.i-1);kmRender()};
+$('#kmNext').onclick=()=>{const a=kmSteps(),st=a[km.i];S.done[st.title+'|'+(+st.at)]=true;kmStop();if(km.i<a.length-1){km.i++;kmRender()}else{$('#kmClose').click();toast('All done. Enjoy!')}};
+
+/* ---------- New UI wiring ---------- */
+$$('[data-q]').forEach(b=>b.onclick=()=>{
+  if(b.dataset.q==='now'){ if(S.mode!=='hours'){ const st=STYLES[S.style]; S.hours=Math.round(clamp(st.defHours, S.leaven==='starter'?(needFeed()?14:8):Math.max((st.minW||2.5)+1,3), Math.max(10,(st.minW||0)+2, S.leaven==='starter'?14:0))); } S.mode='hours'; }
+  else { S.mode='readyBy'; S.start=recommendedStart(); }
+  render();
+});
+$('#qHrsIn').oninput=e=>{S.hours=+e.target.value; render()};
+const ytq = q => 'https://www.youtube.com/results?search_query='+encodeURIComponent(q);
+function openTerm(i){ const t=GLOSS[i]; $('#termName').textContent=t[1]; $('#termText').textContent=t[2]; $('#termMore').innerHTML=`<a class="btn" href="${ytq(t[3])}" target="_blank" rel="noopener" style="text-decoration:none">Watch how on YouTube</a>`; $('#termSheet').classList.add('open'); }
+document.addEventListener('click',e=>{ const t=e.target.closest('.term'); if(t){ e.preventDefault(); e.stopPropagation(); openTerm(+t.dataset.term); } }, true);
+$('#termClose').onclick=()=>$('#termSheet').classList.remove('open');
+$('#termSheet').addEventListener('click',e=>{if(e.target.id==='termSheet')$('#termSheet').classList.remove('open')});
+const setPro=v=>{settings.pro=v; store.set('rise.settings',settings); render();};
+$('#proSw').onchange=e=>setPro(e.target.checked); $('#proSw2').onchange=e=>setPro(e.target.checked);
+$('#noStarter').onclick=()=>{
+  $('#termName').textContent="Don't have a starter?";
+  $('#termText').textContent="A starter takes time to make: a new one usually needs about 10 days of regular feeding before it can reliably raise bread. For this bake, switch to instant yeast. You can start a starter today and use it in a week or two.";
+  $('#termMore').innerHTML=`<button type="button" class="btn primary" id="useYeast" style="width:100%;margin-bottom:8px">Use instant yeast instead</button><a class="btn" href="${ytq('how to make a sourdough starter from scratch')}" target="_blank" rel="noopener" style="text-decoration:none">How to make a starter</a>`;
+  $('#termSheet').classList.add('open');
+};
+document.addEventListener('click',e=>{ if(e.target.id==='useYeast'){ S.leaven='yeast'; if(S.mode==='readyBy') S.start=recommendedStart(); $('#termSheet').classList.remove('open'); render(); toast('Switched to instant yeast'); } });
+$('#logo').innerHTML=ART.logo();
+let chipGroup=STYLES[S.style].group;
+function renderChips(){
+  $('#gtabs').innerHTML=GROUPS.map(([k,n])=>`<button type="button" data-g="${k}" aria-pressed="${k===chipGroup}">${n}</button>`).join('');
+  $('#chips').innerHTML=Object.entries(STYLES).filter(([k,v])=>v.group===chipGroup).map(([k,v])=>`<button type="button" class="chip" data-style="${k}" aria-label="${v.name}" aria-pressed="${k===S.style}">${ART.icon(k)}<span>${v.short||v.name}</span></button>`).join('');
+}
+$('#gtabs').onclick=e=>{const b=e.target.closest('[data-g]'); if(!b)return; chipGroup=b.dataset.g; renderChips();};
+renderChips();
+$('#chips').onclick=e=>{const b=e.target.closest('[data-style]'); if(!b)return; applyParse({style:b.dataset.style}); render(); };
+$('#adjBtn').onclick=()=>{$('#adjust').classList.add('open')};
+$('#adjClose').onclick=()=>{$('#adjust').classList.remove('open')};
+$('#adjust').addEventListener('click',e=>{if(e.target.id==='adjust')$('#adjust').classList.remove('open')});
+$('#nowSw').onchange=e=>{S.mode=e.target.checked?'hours':'readyBy'; if(S.mode==='readyBy') S.start=recommendedStart(); render()};
+$('#ingTable').onclick=e=>{const li=e.target.closest('li'); if(!li)return; const k=li.dataset.k; S.ing[k]=!S.ing[k]; render()};
+$('#ingTable').onkeydown=e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault(); e.target.click()}};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#adjust').classList.remove('open');$('#termSheet').classList.remove('open')}});
+// onboarding
+const stepT=(k,d)=>{settings[k]=clamp(settings[k]+d*(settings.unit==='F'?5/9:0.5), k==='roomC'?16:1, k==='roomC'?30:8); store.set('rise.settings',settings); render()};
+$('#onbRm').onclick=()=>stepT('roomC',-1); $('#onbRp').onclick=()=>stepT('roomC',1);
+$('#onbFm').onclick=()=>stepT('fridgeC',-1); $('#onbFp').onclick=()=>stepT('fridgeC',1);
+$$('[data-yt]').forEach(b=>b.onclick=()=>{settings.yeastType=b.dataset.yt; store.set('rise.settings',settings); render()});
+function openOnb(){ $('#onbArt').innerHTML=ART.strip(); $('#onb').classList.add('open'); }
+$('#onbDone').onclick=()=>{ store.set('rise.settings',settings); store.set('rise.onb',1); $('#onb').classList.remove('open'); toast('Kitchen saved'); };
+$('#rerunOnb').onclick=openOnb;
+if(!store.get('rise.onb',0)) openOnb();
+
+/* calibrate yeast constant so each recipe's own yeast % comes out at its own default schedule */
+(function(){
+  const keep={...S}, ks={roomC:settings.roomC,fridgeC:settings.fridgeC,loss:settings.loss};
+  settings.roomC=21; settings.fridgeC=4;
+  Object.entries(STYLES).forEach(([k,st])=>{ if(!st.y0) return; Object.assign(S,{style:k,leaven:'yeast',mode:'hours',hours:st.defHours,ripe:false}); const P0=plan(); st.k=st.y0*P0.equiv; });
+  Object.assign(S,keep); Object.assign(settings,ks);
+})();
+window.__rise={S,settings,parse,applyParse,render,plan:()=>P,q:()=>Q,steps:()=>STEPS};
+render();
+})();
+</script>
+<script>if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
+</body>
+</html>
